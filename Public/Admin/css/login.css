@@ -1,0 +1,9 @@
+.header{
+	height:105px;
+}
+.form{
+	width:700px;
+	height:500px;
+	border:1px solid red;
+	margin:auto;
+}
