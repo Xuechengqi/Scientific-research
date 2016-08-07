@@ -7,3 +7,12 @@
 	border:1px solid red;
 	margin:auto;
 }
+.form .form_title{
+	font-size:46px;
+	font-weight:bold;
+	text-align:center;
+	padding:4px 6px;
+}
+form table{
+	margin:auto;
+}
