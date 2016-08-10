@@ -28,7 +28,7 @@ class LoginController extends Controller{
 
 	//生成验证码
 	public function getVerify(){
-		$Verify = new \Think\Verify();
+		$Verify = new \Think\Verify();//是通过命名空间实例化的一种方式，用于实例化“ThinkPHP\Library\Think”目录下的Verify.class.php
 		$Verify->entry();
 	}
 	//检查验证码

@@ -14,15 +14,15 @@ class adminModel extends Model{
 		$username = $this->data['username'];     //表单提交的用户名
 		$password = $this->data['password'];     //表单提交的密码
 		//根据用户名查询密码
-		$data = $this->field('password')->where(array('username' => $username))->find();
+		$data = $this->field('password,salt')->where(array('username' => $username))->find();
 		if($data){  //判断密码
-			return $data['password'] == $this->password($password);
+			return $data['password'] == $this->password($password,$data['salt']);
 		}
 		return false;
 	}
 	//密码加密函数
-	private function password($password){
-		return md5($password);
+	private function password($password,$salt){
+		return md5(md5($password).$salt);
 	}
 }
 ?>

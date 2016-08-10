@@ -1,4 +1,4 @@
-{__NOLAYOUT__}<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -17,7 +17,7 @@
 			<tr><th width="80">用户名：</th><td><input class="input" type="text" name="username" required /></td></tr>
 			<tr><th>密　码：</th><td><input class="input" type="password" name="password" required /></td></tr>
 			<tr><th>验证码：</th><td><input class="input" type="text" name="verify" required /></td></tr>
-			<tr><td> </td><td><img src="{:U('Login/getVerify')}" id="verify_img" title="点击刷新验证码"/></td></tr>
+			<tr><td> </td><td><img src="<?php echo U('Login/getVerify');?>" id="verify_img" title="点击刷新验证码"/></td></tr>
 			<tr><td> </td><td><input class="login_btn" type="submit" value="登录" /></td></tr>
 		</table>
 	</form>
