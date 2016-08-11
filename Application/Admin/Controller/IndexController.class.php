@@ -2,12 +2,11 @@
 //当前控制器的命名空间，对应Application\Admin\Controller目录
 namespace Admin\Controller;
 //引入的命名空间
-//use Think\Controller;
+use Think\Controller;
 //后台首页
 class IndexController extends CommonController{
     //后台首页，显示服务器基本信息
     public function index(){
-        exit(123);
         $serverInfo = array(
             //获取服务器信息（操作系统、Apache版本、PHP版本）
             'server_version' => $_SERVER['SERVER_SOFTWARE'],
