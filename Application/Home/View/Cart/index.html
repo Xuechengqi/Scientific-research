@@ -19,7 +19,7 @@
 		<form method="post" action="/order/buy.html">
 			<table class="shopcart">
 				<tr><th width="60"><a href="#" class="checkAll">全选</a></th>
-				<th>商品</th><th width="150">单价(元)</th><th width="95">数量</th><th width="120">操作</th></tr>
+				<th>物品</th><th width="150">单价(元)</th><th width="95">数量</th><th width="120">操作</th></tr>
 				<tr class="item">
 					<td class="center"><input type="checkbox" name="buy[0][id]" class="check" value="1" /></td>
 					<td><a href="/?a=goods&id=1" target="_blank" class="bold">PHP网站开发实例教程</a></td>
@@ -52,7 +52,7 @@
 					<td class="center"><a href="/cart/del/id/8.html" />删除</a></td>
 					</tr>				<tr class="act"><td class="center"><a href="#" class="checkAll">全选</a></td>
 				<td colspan="4">
-					共<span id="num"></span>件商品 总计：<span class="price">￥<span id="monery"></span></span>
+					共<span id="num"></span>件物品 总计：<span class="price">￥<span id="monery"></span></span>
 					<input type="submit" value="提交订单" class="order-btn" />
 				</td></tr>
 			</table>
@@ -104,7 +104,7 @@
 	function total() {
 		var count = 0; //总数量
 		var total = 0; //总价格
-		//遍历勾选的商品
+		//遍历勾选的物品
 		$(".check:checked").each(function(){
 			var $item = $(this).parents(".item");
 			var price = parseFloat($item.find(".item-price").text());
