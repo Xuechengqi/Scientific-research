@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>后台登录 - 校园二手信息发布网</title>
 	<link rel="stylesheet" href="../../../../Public/Admin/css/style.css" />
-	<script src="../../../../Public/Admin/js/jquery-1.12.1.min.js"></script>
+	<script src="../../../../Public/Common/js/jquery-1.12.1.min.js"></script>
 </head>
 <body class="login">
 <div class="top">

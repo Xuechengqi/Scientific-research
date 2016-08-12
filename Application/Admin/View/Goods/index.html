@@ -1,74 +1,66 @@
 <div class="title">物品列表</div>
 <div class="top-button">
-	选择物品分类：<select id="category">
-		<option value="-1" >全部</option>
-		<option value="0" >未分类</option>
-		<option value="14" >图书</option><option value="15" >— 音像</option><option value="62" >— — 音乐</option><option value="63" >— — 影视</option><option value="64" >— — 游戏</option><option value="16" >— IT类</option><option value="17" >— — PHP书籍</option><option value="18" >— — JAVA书籍</option><option value="19" >— — MySQL书籍</option><option value="34" >— — C语言书籍</option><option value="49" >— — 网页书籍</option><option value="35" >— 少儿</option><option value="36" >— — 少儿英语</option><option value="37" >— — 少儿文学</option><option value="38" >— 管理</option><option value="39" >— — 经济</option><option value="40" >— — 金融</option><option value="41" >— — 投资</option><option value="42" >— 生活</option><option value="43" >— — 旅游</option><option value="44" >— — 运动</option><option value="45" >— 艺术</option><option value="46" >— — 摄影</option><option value="47" >— — 设计</option><option value="48" >— — 绘画</option><option value="54" >家具</option><option value="55" >手机</option><option value="56" >服装</option><option value="57" >家用电器</option><option value="58" >电脑、办公</option><option value="59" >运动户外</option><option value="60" >家具、厨具</option>	</select>
-	<a href="/Admin/Goods/add/cid/-1.html" class="light">添加物品</a>
-	<a href="/Admin/Category/add.html">添加分类</a>
+    选择物品分类：
+    <select id="category">
+        <option value="-1" >全部</option>
+        <option value="0" <eq name="cid" value="0">selected</eq>>未分类</option>
+        <foreach name="category" item="v">
+            <option value="{$v.id}" <eq name="v.id" value="$cid">selected</eq>>{:str_repeat('— ',$v['level'])}{$v.name}</option>
+        </foreach>
+    </select>
+    <a href="{:U('Goods/add',array('cid'=>$cid))}" class="light">添加物品</a>
+    <a href="{:U('Category/add')}">添加分类</a>
 </div>
 <div class="list full">
-	<table>
-		<tr><th class="t1">物品分类</th><th>物品名称</th><th width="100">库存</th><th width="60">上架</th><th width="60">推荐</th><th width="120">操作</th></tr>
-		<tr><td class="t1">
-									<a href="/Admin/Goods/index/cid/16.html">IT类</a>			</td>
-			<td>测试</td><td>11</td>
-			<td><a href="#" class="act-onsale" data-id="52" data-status="no">否</a></td>
-			<td><a href="#" class="act-recommend" data-id="52" data-status="no">否</a></td><td>
-			<a href="/Admin/Goods/edit/id/52/cid/16/p/0.html">修改</a>　<a href="#" class="act-del" data-id="52">删除</a></td></tr><tr><td class="t1">
-									<a href="/Admin/Goods/index/cid/49.html">网页书籍</a>			</td>
-			<td>HTML+CSS+JavaScript网页制作案例教程</td><td>96</td>
-			<td><a href="#" class="act-onsale" data-id="51" data-status="yes">是</a></td>
-			<td><a href="#" class="act-recommend" data-id="51" data-status="no">否</a></td><td>
-			<a href="/Admin/Goods/edit/id/51/cid/49/p/0.html">修改</a>　<a href="#" class="act-del" data-id="51">删除</a></td></tr><tr><td class="t1">
-									<a href="/Admin/Goods/index/cid/17.html">PHP书籍</a>			</td>
-			<td>PHP程序设计高级教程</td><td>500</td>
-			<td><a href="#" class="act-onsale" data-id="50" data-status="yes">是</a></td>
-			<td><a href="#" class="act-recommend" data-id="50" data-status="yes">是</a></td><td>
-			<a href="/Admin/Goods/edit/id/50/cid/17/p/0.html">修改</a>　<a href="#" class="act-del" data-id="50">删除</a></td></tr><tr><td class="t1">
-									<a href="/Admin/Goods/index/cid/17.html">PHP书籍</a>			</td>
-			<td>PHP程序设计基础教程</td><td>700</td>
-			<td><a href="#" class="act-onsale" data-id="49" data-status="yes">是</a></td>
-			<td><a href="#" class="act-recommend" data-id="49" data-status="no">否</a></td><td>
-			<a href="/Admin/Goods/edit/id/49/cid/17/p/0.html">修改</a>　<a href="#" class="act-del" data-id="49">删除</a></td></tr><tr><td class="t1">
-									<a href="/Admin/Goods/index/cid/18.html">JAVA书籍</a>			</td>
-			<td>JavaWeb程序开发入门</td><td>2999</td>
-			<td><a href="#" class="act-onsale" data-id="48" data-status="yes">是</a></td>
-			<td><a href="#" class="act-recommend" data-id="48" data-status="yes">是</a></td><td>
-			<a href="/Admin/Goods/edit/id/48/cid/18/p/0.html">修改</a>　<a href="#" class="act-del" data-id="48">删除</a></td></tr>	</table>
+    <table>
+        <tr><th class="t1">物品分类</th><th>物品名称</th><th width="100">发布时间</th><th width="60">上架</th><th width="60">推荐</th><th width="120">操作</th></tr>
+        <foreach name="goods.data" item="v">
+            <tr><td class="t1">
+                <empty name="v.category_id">
+                    <a href="{:U('Goods/index','cid=0')}">未分类</a>
+                <else />
+                    <a href="{:U('Goods/index',array('cid'=>$v['category_id']))}">{$v.category_name}</a>
+                </empty>
+            </td>
+            <td>{$v.name}</td><td>{$v.publish_time}</td>
+            <td><a href="#" class="act-onsale" data-id="{$v.id}" data-status="{$v.on_sale}"><eq name="v.on_sale" value="yes">是<else />否</eq></a></td>
+            <td><a href="#" class="act-recommend" data-id="{$v.id}" data-status="{$v.recommend}"><eq name="v.recommend" value="yes">是<else />否</eq></a></td>
+            <td><a href="{:U('Goods/edit',array('id'=>$v['id'],'cid'=>$v['category_id'],'p'=>$p))}">修改</a><a href="#" class="act-del" data-id="{$v.id}">删除</a></td></tr>
+        </foreach>
+    </table>
 </div>
-<div class="pagelist"><div>  <span class="current">1</span><a class="num" href="/Admin/Goods/index/p/2.html">2</a> <a class="next" href="/Admin/Goods/index/p/2.html">下一页</a> </div></div>
+<div class="pagelist">{$goods.pagelist}</div>
 <form method="post" id="form">
-	<input type="hidden" name="id" id="target_id">
-	<input type="hidden" name="field" id="target_field">
-	<input type="hidden" name="status" id="target_status">
+    <input type="hidden" name="id" id="target_id">
+    <input type="hidden" name="field" id="target_field">
+    <input type="hidden" name="status" id="target_status">
 </form>
 <script>
-	//下拉菜单跳转
-	$("#category").change(function(){
-		var url = "/Admin/Goods/index/cid/_ID_.html";
-		location.href = url.replace("_ID_",$(this).val());
-	});
-	//快捷操作
-	function change_status(obj,field){
-		$("#target_id").val(obj.attr("data-id"));
-		$("#target_field").attr("value",field)
-		$("#target_status").attr("value",(obj.attr("data-status")=="yes") ? "no" : "yes");
-		$("#form").attr("action","/Admin/Goods/change/p/0/cid/-1.html").submit();
-	}
-	//快捷操作-上架
-	$(".act-onsale").click(function(){
-		change_status($(this),'on_sale');
-	});
-	//快捷操作-推荐
-	$(".act-recommend").click(function(){
-		change_status($(this),'recommend');
-	});
-	//快捷操作-删除
-	$(".act-del").click(function(){
-		if(confirm('确定要删除吗？')){
-			$("#target_id").val($(this).attr("data-id"));
-			$("#form").attr("action","/Admin/Goods/del/p/0/cid/-1.html").submit();
-		}
-	});
+    //下拉菜单跳转
+    $("#category").change(function(){
+        var url = "{:U('Goods/index',array('cid'=>'_ID_'))}";
+        location.href = url.replace("_ID_",$(this).val());
+    });
+    //快捷操作
+    function change_status(obj,field){
+        $("#target_id").val(obj.attr("data-id"));
+        $("#target_field").attr("value",field)
+        $("#target_status").attr("value",(obj.attr("data-status")=="yes") ? "no" : "yes");
+        $("#form").attr("action","{:U('Goods/change',array('p'=>$p,'cid'=>$cid))}").submit();
+    }
+    //快捷操作-上架
+    $(".act-onsale").click(function(){
+        change_status($(this),'on_sale');
+    });
+    //快捷操作-推荐
+    $(".act-recommend").click(function(){
+        change_status($(this),'recommend');
+    });
+    //快捷操作-删除
+    $(".act-del").click(function(){
+        if(confirm('确定要删除吗？')){
+            $("#target_id").val($(this).attr("data-id"));
+            $("#form").attr("action","{:U('Goods/del',array('p'=>$p,'cid'=>$cid))}").submit();
+        }
+    });
 </script>

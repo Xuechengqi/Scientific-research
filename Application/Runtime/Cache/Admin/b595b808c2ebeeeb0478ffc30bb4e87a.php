@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>二手信息发布网 - 后台管理系统</title>
-	<link rel="stylesheet" href="../../../Public/Admin/css/style.css"/>
-	<script src="../../../Public/Common/js/jquery-1.12.1.min.js"></script>
+	<link rel="stylesheet" href="/Public/Admin/css/style.css"/>
+	<script src="/Public/Common/js/jquery-1.12.1.min.js"></script>
 </head>
 <body>
 <div class="top">
