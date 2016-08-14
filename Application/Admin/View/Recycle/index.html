@@ -1,23 +1,25 @@
 <div class="title">物品回收站</div>
 <div class="top-button">
-	相关操作：<a href="/Admin/Goods/index.html" class="light">物品列表</a>
+	相关操作：<a href="{:U('Goods/index')}" class="light">物品列表</a>
 </div>
 <div class="list full">
 	<table>
-		<tr><th class="t1">物品分类</th><th>物品名称</th><th width="100">库存</th><th width="60">上架</th><th width="60">推荐</th><th width="120">操作</th></tr>
-		<tr><td class="t1">
-				IT类			</td>
-			<td>测试</td><td>11</td>
-			<td>否</td>
-			<td>否</td><td>
-			<a href="#" class="act-rec" data-id="52">恢复</a>　<a href="#" class="act-del" data-id="52">删除</a></td></tr><tr><td class="t1">
-				网页书籍			</td>
-			<td>HTML+CSS+JavaScript网页制作案例教程</td><td>96</td>
-			<td>是</td>
-			<td>否</td><td>
-			<a href="#" class="act-rec" data-id="51">恢复</a>　<a href="#" class="act-del" data-id="51">删除</a></td></tr>	</table>
+		<tr><th class="t1">物品分类</th><th>物品名称</th><th width="100">发布时间</th><th width="60">上架</th><th width="60">推荐</th><th width="120">操作</th></tr>
+		<foreach name="goods.data" item="v">
+			<tr>
+				<td class="t1">
+					<empty name="v.category_id">未分类<else />{$v.category_name}</empty>
+				</td>
+				<td>{$v.name}</td><td>{$v.publish_time}</td>
+				<td><eq name="v.on_sale" value="yes">是<else />否</eq></td>
+				<td><eq name="v.recommend" value="yes">是<else />否</eq></td>
+				<td><a href="#" class="act-rec" data-id="{$v.id}">恢复</a>
+				<a href="#" class="act-del" data-id="{$v.id}">删除</a></td>
+			</tr>
+		</foreach>
+	</table>
 </div>
-<div class="pagelist"><div>    </div></div>
+<div class="pagelist">{$goods.pagelist}</div>
 <form method="post" id="form">
 	<input type="hidden" name="id" id="target_id">
 </form>
@@ -26,12 +28,12 @@
 	$(".act-del").click(function(){
 		if(confirm('确定要彻底删除吗？')){
 			$("#target_id").val($(this).attr("data-id"));
-			$("#form").attr("action","/Admin/Recycle/del/p/0.html").submit();
+			$("#form").attr("action","{:U('Recycle/del',array('p'=>$p))}").submit();
 		}
 	});
 	//恢复
 	$(".act-rec").click(function(){
 		$("#target_id").val($(this).attr("data-id"));
-		$("#form").attr("action","/Admin/Recycle/rec/p/0.html").submit();
+		$("#form").attr("action","{:U('Recycle/rec',array('p'=>$p))}").submit();
 	});
 </script>

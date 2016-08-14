@@ -2,6 +2,26 @@
 namespace Admin\Model;
 use Think\Model;
 class GoodsModel extends Model{
+    //表单字段过滤
+    protected $insertFields = 'name,price,on_sale,recommend';
+    protected $updateFields = 'name,price,on_sale,recommend';
+    //自动验证
+    protected $_validate = array(
+        array('name','1,40','物品名称不合法（1-40个字符）',1,'length'),
+        array('price','0.01,100000','物品价格输入不合法（0.01-100000）',1,'between'),
+        array('on_sale',array('yes','no'),'出售状态输入不合法',1,'in'),
+        array('recommend',array('yes','no'),'推荐状态输入不合法',1,'in'),
+    );
+    //根据$where条件删除物品预览图文件
+    public function delThumbFile($where){
+        //取出原图文件名
+        $thumb = $this->where($where)->getField('thumb');
+        if(!$thumb) return ;   //物品图片不存在时直接返回
+        $path = "./Public/Uploads/big/$thumb";   //准备大图目录
+        if(is_file($path)) unlink($path);    //删除大图文件
+        $path = './Public/Uploads/small/$thumb';    //准备小图目录
+        if(is_file($path)) unlink($path);    //删除小图文件
+    }
     /**
     * 物品列表
     * @param string $type 数据用途(物品列表或回收站列表)

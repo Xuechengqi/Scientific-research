@@ -30,32 +30,41 @@
 		</div>
 	</div>
 	<div class="content">
-		<div class="item"><div class="title">物品分类</div>
+		<div class="item"><div class="title">物品回收站</div>
 <div class="top-button">
-	相关操作：<a href="<?php echo U('Category/add');?>" class="light">添加分类</a>
+	相关操作：<a href="<?php echo U('Goods/index');?>" class="light">物品列表</a>
 </div>
-<div class="list full auto">
+<div class="list full">
 	<table>
-		<tr><th>分类名称</th><th>操作</th></tr>
-		<?php if(is_array($category)): foreach($category as $key=>$v): ?><tr>
-				<td><?php echo str_repeat('— ',$v['level']); echo ($v["name"]); ?></td>
-				<td>
-					<a href="<?php echo U('Category/edit',array('id'=>$v['id']));?>">修改</a>
-					<a href="#" class="act-del" data-id="<?php echo ($v["id"]); ?>">删除</a>
+		<tr><th class="t1">物品分类</th><th>物品名称</th><th width="100">发布时间</th><th width="60">上架</th><th width="60">推荐</th><th width="120">操作</th></tr>
+		<?php if(is_array($goods["data"])): foreach($goods["data"] as $key=>$v): ?><tr>
+				<td class="t1">
+					<?php if(empty($v["category_id"])): ?>未分类<?php else: echo ($v["category_name"]); endif; ?>
 				</td>
+				<td><?php echo ($v["name"]); ?></td><td><?php echo ($v["publish_time"]); ?></td>
+				<td><?php if(($v["on_sale"]) == "yes"): ?>是<?php else: ?>否<?php endif; ?></td>
+				<td><?php if(($v["recommend"]) == "yes"): ?>是<?php else: ?>否<?php endif; ?></td>
+				<td><a href="#" class="act-rec" data-id="<?php echo ($v["id"]); ?>">恢复</a>
+				<a href="#" class="act-del" data-id="<?php echo ($v["id"]); ?>">删除</a></td>
 			</tr><?php endforeach; endif; ?>
 	</table>
 </div>
+<div class="pagelist"><?php echo ($goods["pagelist"]); ?></div>
 <form method="post" id="form">
 	<input type="hidden" name="id" id="target_id">
 </form>
 <script>
-	//删除
+	//彻底删除
 	$(".act-del").click(function(){
-		if(confirm('确定要删除吗？（该分类下的物品将归于未分类）')){
+		if(confirm('确定要彻底删除吗？')){
 			$("#target_id").val($(this).attr("data-id"));
-			$("#form").attr("action","<?php echo U('Category/del');?>").submit();
+			$("#form").attr("action","<?php echo U('Recycle/del',array('p'=>$p));?>").submit();
 		}
+	});
+	//恢复
+	$(".act-rec").click(function(){
+		$("#target_id").val($(this).attr("data-id"));
+		$("#form").attr("action","<?php echo U('Recycle/rec',array('p'=>$p));?>").submit();
 	});
 </script></div>
 	</div>

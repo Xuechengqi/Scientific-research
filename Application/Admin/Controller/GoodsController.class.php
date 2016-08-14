@@ -58,5 +58,26 @@ class GoodsController extends CommonController{
         $this->assign($data);
         $this->display();
     }
+    //删除物品（放入回收站）
+    public function del(){
+        //阻止直接访问
+        if(!IS_POST) $this->error('删除失败：未选择物品');
+        $id = I('post.id/d',0);//待删除物品ID
+        $p = I('get.p/d',0);//当前页码
+        $cid = I('get.cid/d',0);//分类ID
+        //生成跳转地址
+        $jump = U('Goods/index',array('cid'=>$cid,'p'=>$p));
+        //实例化模型
+        $Goods = M('Goods');
+        //检查表单令牌
+        if(!$Goods->autoCheckToken($_POST)){
+            $this->error('表单已过期，请重新提交',$jump);
+        }
+        //将物品放入回收站
+        if(false === $Goods->where(array('id'=>$id))->save(array('recycle'=>'yes'))){
+            $this->error('删除物品失败',$jump);
+        }
+        redirect($jump);//删除成功，跳转到物品列表
+    }
 }
 ?>

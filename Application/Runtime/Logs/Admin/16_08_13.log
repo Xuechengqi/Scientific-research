@@ -1,0 +1,10 @@
+[ 2016-08-13T10:50:43+08:00 ] 127.0.0.1 /index.php/Category/index.html
+ERR: 1146:La table 'secondhandinfo.category' n'existe pas
+ [ SQL语句 ] : SHOW COLUMNS FROM `category`
+
+[ 2016-08-13T15:21:19+08:00 ] 127.0.0.1 /index.php/Recycle/index.html
+ERR: 无法加载控制器:Recycle
+
+[ 2016-08-13T18:09:42+08:00 ] 127.0.0.1 /index.php/Recycle/rec/p/0.html
+ERR: 非法操作:rec
+
