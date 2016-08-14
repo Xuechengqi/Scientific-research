@@ -24,7 +24,7 @@ class GoodsController extends CommonController{
         $this->display();
     }
     //物品添加
-    public function add(){
+    /*public function add(){
         $cid = I('get.cid/d',0);    //分类ID
         if($cid < 0) $cid = 0;      //防止分类ID为负数
         $Category = D('Category');  //实例化分类模型
@@ -57,7 +57,7 @@ class GoodsController extends CommonController{
         $data['cid'] = $cid;
         $this->assign($data);
         $this->display();
-    }
+    }*/
     //删除物品（放入回收站）
     public function del(){
         //阻止直接访问
@@ -78,6 +78,37 @@ class GoodsController extends CommonController{
             $this->error('删除物品失败',$jump);
         }
         redirect($jump);//删除成功，跳转到物品列表
+    }
+    //物品列表快捷修改
+    public function change(){
+        //阻止直接访问
+        if(!IS_POST) $this->error('操作失败：未选择物品');
+        //获取参数
+        $cid = I('get.cid/d',0);
+        $p = I('get.p/d',0);
+        $id = I('post.id/d',0);
+        $field = I('post.field');
+        $status = I('post.status');
+        //生成跳转地址
+        $jump = U('Goods/index',array('cid'=>$cid,'p'=>$p));
+        //实例化模型
+        $Goods = M('Goods');
+        //检查输入变量
+        if($field!='on_sale' && $field!='recommend'){
+            $this->error('操作失败：非法字段');
+        }
+        if($status!='yes' && $status!='no'){
+            $this->error('操作失败：非法状态值');
+        }
+        //检查表单令牌
+        if(!$Goods->autocheckToken($_POST)){
+            $this->error('表单已过期，请重新提交',$jump);
+        }
+        //执行操作
+        if(false === $Goods->where(array('id'=>$id,'recycle'=>'no'))->save(array($field=>$status))){
+            $this->error('操作失败：数据库保存失败',$jump);
+        }
+        redirect($jump);//操作成功，跳转
     }
 }
 ?>

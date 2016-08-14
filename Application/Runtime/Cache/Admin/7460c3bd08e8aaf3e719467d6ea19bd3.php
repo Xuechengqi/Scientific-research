@@ -20,7 +20,6 @@
 		<div class="box">
 			<div class="head"><i></i><div>管理菜单</div></div>
 			<ul><li><a href="<?php echo U('Index/index');?>">后台首页</a></li>
-				<li><a href="<?php echo U('Goods/add');?>" id="Goods_add">物品添加</a></li>
 				<li><a href="<?php echo U('Goods/index');?>" id="Goods_index">物品列表</a></li>
 				<li><a href="<?php echo U('Category/add');?>" id="Category_add">分类添加</a></li>
 				<li><a href="<?php echo U('Category/index');?>" id="Category_index">分类列表</a></li>
@@ -38,7 +37,6 @@
         <option value="0" <?php if(($cid) == "0"): ?>selected<?php endif; ?>>未分类</option>
         <?php if(is_array($category)): foreach($category as $key=>$v): ?><option value="<?php echo ($v["id"]); ?>" <?php if(($v["id"]) == $cid): ?>selected<?php endif; ?>><?php echo str_repeat('— ',$v['level']); echo ($v["name"]); ?></option><?php endforeach; endif; ?>
     </select>
-    <a href="<?php echo U('Goods/add',array('cid'=>$cid));?>" class="light">添加物品</a>
     <a href="<?php echo U('Category/add');?>">添加分类</a>
 </div>
 <div class="list full">

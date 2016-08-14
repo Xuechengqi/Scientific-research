@@ -8,7 +8,6 @@
             <option value="{$v.id}" <eq name="v.id" value="$cid">selected</eq>>{:str_repeat('— ',$v['level'])}{$v.name}</option>
         </foreach>
     </select>
-    <a href="{:U('Goods/add',array('cid'=>$cid))}" class="light">添加物品</a>
     <a href="{:U('Category/add')}">添加分类</a>
 </div>
 <div class="list full">
