@@ -1,91 +1,20 @@
 <!--分类左栏-->
-<div class="slide">
-<div class="cate">
-	<div class="subcate left"><a href="/Index/find/cid/14.html">图书</a></div>
-	<div class="subitem" style="display:none;">
-		<dl><dt><a href="/Index/find/cid/15.html">音像</a></dt><dd><a href="/Index/find/cid/62.html">音乐</a><a href="/Index/find/cid/63.html">影视</a><a href="/Index/find/cid/64.html">游戏</a></dd></dl><dl><dt><a href="/Index/find/cid/16.html">IT类</a></dt><dd><a href="/Index/find/cid/17.html">PHP书籍</a><a href="/Index/find/cid/18.html">JAVA书籍</a><a href="/Index/find/cid/19.html">MySQL书籍</a><a href="/Index/find/cid/34.html">C语言书籍</a><a href="/Index/find/cid/49.html">网页书籍</a></dd></dl><dl><dt><a href="/Index/find/cid/35.html">少儿</a></dt><dd><a href="/Index/find/cid/36.html">少儿英语</a><a href="/Index/find/cid/37.html">少儿文学</a></dd></dl><dl><dt><a href="/Index/find/cid/38.html">管理</a></dt><dd><a href="/Index/find/cid/39.html">经济</a><a href="/Index/find/cid/40.html">金融</a><a href="/Index/find/cid/41.html">投资</a></dd></dl><dl><dt><a href="/Index/find/cid/42.html">生活</a></dt><dd><a href="/Index/find/cid/43.html">旅游</a><a href="/Index/find/cid/44.html">运动</a></dd></dl><dl><dt><a href="/Index/find/cid/45.html">艺术</a></dt><dd><a href="/Index/find/cid/46.html">摄影</a><a href="/Index/find/cid/47.html">设计</a><a href="/Index/find/cid/48.html">绘画</a></dd></dl>	</div>
-</div><div class="cate">
-	<div class="subcate left"><a href="/Index/find/cid/54.html">家具</a></div>
-	<div class="subitem" style="display:none;">
-			</div>
-</div><div class="cate">
-	<div class="subcate left"><a href="/Index/find/cid/55.html">手机</a></div>
-	<div class="subitem" style="display:none;">
-			</div>
-</div><div class="cate">
-	<div class="subcate left"><a href="/Index/find/cid/56.html">服装</a></div>
-	<div class="subitem" style="display:none;">
-			</div>
-</div><div class="cate">
-	<div class="subcate left"><a href="/Index/find/cid/57.html">家用电器</a></div>
-	<div class="subitem" style="display:none;">
-			</div>
-</div><div class="cate">
-	<div class="subcate left"><a href="/Index/find/cid/58.html">电脑、办公</a></div>
-	<div class="subitem" style="display:none;">
-			</div>
-</div><div class="cate">
-	<div class="subcate left"><a href="/Index/find/cid/59.html">运动户外</a></div>
-	<div class="subitem" style="display:none;">
-			</div>
-</div><div class="cate">
-	<div class="subcate left"><a href="/Index/find/cid/60.html">家具、厨具</a></div>
-	<div class="subitem" style="display:none;">
-			</div>
-</div><div class="clear"></div>
-</div>
-<script>
-	$(".cate").hover(function(){
-		$(this).find(".subitem").show();
-		$(this).children(".subcate").children("a").addClass("on");
-	},function(){
-		$(this).find(".subitem").hide();
-		$(this).children(".subcate").children("a").removeClass("on");
-	});
-</script>
+<include file="Index/_slide" />
 <!--热点图-->
-<div class="hot left" id="hot">
-	<div class="num"><a class="curr"></a><a></a><a></a><a></a></div>
-	<ul>
-		<li class="def"><a href="#"><img src="./Public/Uploads/hot/1.jpg" /></a></li>
-		<li><a href="#"><img src="./Public/Uploads/hot/2.jpg" /></a></li>
-		<li><a href="#"><img src="./Public/Uploads/hot/3.jpg" /></a></li>
-		<li><a href="#"><img src="./Public/Uploads/hot/4.jpg" /></a></li>
-	</ul>
-</div>
-<script src="./Public/Home/js/slideBox.js"></script>
-<script>
-	slideBox("#hot",5000);  //焦点图切换
-</script>
+<include file="Index/_hot" />
 <!--新闻列表-->
 <div class="news right">最新动态</div>
 <div class="clear"></div>
-<!--推荐物品-->
+<!--推荐商品-->
 <div class="best">
 	<div class="best-title">精品推荐</div>
+	<foreach name="best" item="v">
 	<ul class="item left">
-		<li><a href="/Index/goods/id/44.html" target="_blank"><img src="./Public/Uploads/small/2015-05/11/55501bd99a98e.jpg"></a></li>
-		<li class="goods"><a href="/Index/goods/id/44.html" target="_blank">Objective-C入门教程</a></li>
-		<li class="price">￥34.00</li>
-	</ul><ul class="item left">
-		<li><a href="/Index/goods/id/45.html" target="_blank"><img src="./Public/Uploads/small/2015-05/11/5550444272f89.png"></a></li>
-		<li class="goods"><a href="/Index/goods/id/45.html" target="_blank">PHP网站开发实例教程</a></li>
-		<li class="price">￥45.00</li>
-	</ul><ul class="item left">
-		<li><a href="/Index/goods/id/46.html" target="_blank"><img src="./Public/Uploads/small/2015-05/11/55502117ec92f.jpg"></a></li>
-		<li class="goods"><a href="/Index/goods/id/46.html" target="_blank">MySQL数据库入门</a></li>
-		<li class="price">￥39.50</li>
-	</ul><ul class="item left">
-		<li><a href="/Index/goods/id/47.html" target="_blank"><img src="./Public/Uploads/small/2015-05/11/5550216053882.jpg"></a></li>
-		<li class="goods"><a href="/Index/goods/id/47.html" target="_blank">Java基础入门</a></li>
-		<li class="price">￥44.50</li>
-	</ul><ul class="item left">
-		<li><a href="/Index/goods/id/48.html" target="_blank"><img src="./Public/Uploads/small/2015-05/11/555021e954397.jpg"></a></li>
-		<li class="goods"><a href="/Index/goods/id/48.html" target="_blank">JavaWeb程序开发入门</a></li>
-		<li class="price">￥44.50</li>
-	</ul><ul class="item left">
-		<li><a href="/Index/goods/id/50.html" target="_blank"><img src="./Public/Uploads/small/2015-05/11/5550449f1d984.jpg"></a></li>
-		<li class="goods"><a href="/Index/goods/id/50.html" target="_blank">PHP程序设计高级教程</a></li>
-		<li class="price">￥45.00</li>
-	</ul></div>
+		<li><a href="{:U('Index/goods',array('id'=>$v['id']))}" target="_blank"><empty name="v.thumb"><img src="__PUBLIC__/Common/img/preview.jpg"><else/><img src="__PUBLIC__/Uploads/small/{$v.thumb}"></empty></a></li>
+		<li class="goods"><a href="{:U('Index/goods',array('id'=>$v['id']))}" target="_blank">{$v.name}</a></li>
+		<li class="seller"><a href="{:U('Index/seller',array('seller'=>$v['seller_id']))}" target="_blank">{$v.seller_id}</a></li>
+		<li class="price">￥{$v.price}</li>
+	</ul>
+	</foreach>
+</div>
 <script> $("#Index_index").addClass("curr"); </script>

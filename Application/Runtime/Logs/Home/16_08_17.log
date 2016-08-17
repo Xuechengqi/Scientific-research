@@ -1,3 +1,42 @@
 [ 2016-08-17T10:08:32+08:00 ] 127.0.0.1 /
 ERR: 无法加载控制器:Index
 
+[ 2016-08-17T10:40:55+08:00 ] 127.0.0.1 /Public/Home/css/style.css
+ERR: 无法加载控制器:Public
+
+[ 2016-08-17T10:40:55+08:00 ] 127.0.0.1 /Public/Common/js/jquery.min.js
+ERR: 无法加载控制器:Public
+
+[ 2016-08-17T10:40:55+08:00 ] 127.0.0.1 /Public/Home/js/slideBox.js
+ERR: 无法加载控制器:Public
+
+[ 2016-08-17T10:40:57+08:00 ] 127.0.0.1 /Public/Home/js/slideBox.js
+ERR: 无法加载控制器:Public
+
+[ 2016-08-17T10:40:57+08:00 ] 127.0.0.1 /Public/Home/css/style.css
+ERR: 无法加载控制器:Public
+
+[ 2016-08-17T10:40:57+08:00 ] 127.0.0.1 /Public/Common/js/jquery.min.js
+ERR: 无法加载控制器:Public
+
+[ 2016-08-17T10:40:57+08:00 ] 127.0.0.1 /Public/Home/js/slideBox.js
+ERR: 无法加载控制器:Public
+
+[ 2016-08-17T10:44:59+08:00 ] 127.0.0.1 /Public/Common/js/jquery.min.js
+ERR: 无法加载控制器:Public
+
+[ 2016-08-17T10:45:00+08:00 ] 127.0.0.1 /Public/Common/js/jquery.min.js
+ERR: 无法加载控制器:Public
+
+[ 2016-08-17T10:46:52+08:00 ] 127.0.0.1 /Public/Common/js/jquery.min.js
+ERR: 无法加载控制器:Public
+
+[ 2016-08-17T10:46:54+08:00 ] 127.0.0.1 /Public/Common/js/jquery.min.js
+ERR: 无法加载控制器:Public
+
+[ 2016-08-17T10:46:54+08:00 ] 127.0.0.1 /Public/Common/js/jquery.min.js
+ERR: 无法加载控制器:Public
+
+[ 2016-08-17T10:47:33+08:00 ] 127.0.0.1 /Public/Common/js/jquery-1-12-1.min.js
+ERR: 无法加载控制器:Public
+

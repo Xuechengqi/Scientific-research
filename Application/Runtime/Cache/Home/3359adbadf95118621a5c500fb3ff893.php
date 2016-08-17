@@ -1,10 +1,10 @@
-{__NOLAYOUT__}<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>二手信息发布网 - 注册</title>
-	<link href="__PUBLIC__/Home/css/user.css" rel="stylesheet" />
-	<script src="__PUBLIC__/Common/js/jquery-1.12.1.min.js"></script>
+	<link href="/Public/Home/css/user.css" rel="stylesheet" />
+	<script src="/Public/Common/js/jquery-1.12.1.min.js"></script>
 </head>
 <body>
 <div class="box">
@@ -16,7 +16,7 @@
 			<tr><th>密码：</th><td><input type="password" name="password" id="pwd" required /></td></tr>
 			<tr><th>确认密码：</th><td><input type="password" id="pwd2" required /></td></tr>
 			<tr><th>验证码：</th><td><input type="text" name="verify" required /></td></tr>
-			<tr><td> </td><td><img src="{:U('User/getVerify')}" id="verify_img" title="点击刷新验证码" /></td></tr>
+			<tr><td> </td><td><img src="<?php echo U('User/getVerify');?>" id="verify_img" title="点击刷新验证码" /></td></tr>
 			<tr><td> </td><td><input class="button" type="submit" value="注　册" /></td></tr>
 			<tr><td colspan="2" class="center"><a href="/User/login.html">返回登录</a><a href="/">返回首页</a></td></tr>
 		</table>
