@@ -19,7 +19,7 @@ class CategoryController extends CommonController{
                 $this->error('添加失败：保存到数据库失败。');
             }
             //添加成功
-            if(isset($_POST['return'])) $this-> redirect('Category/ index');
+            if(isset($_POST['return'])) $this-> redirect('Category/index');
             $this->assign('success',true);
         }
         $data = $Category->getList();    //获取分类数据

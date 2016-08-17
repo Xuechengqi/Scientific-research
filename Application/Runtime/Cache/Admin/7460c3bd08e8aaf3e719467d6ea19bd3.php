@@ -41,16 +41,16 @@
 </div>
 <div class="list full">
     <table>
-        <tr><th class="t1">物品分类</th><th>物品名称</th><th width="100">发布时间</th><th width="60">上架</th><th width="60">推荐</th><th width="120">操作</th></tr>
+        <tr><th class="t1">物品分类</th><th>物品名称</th><th width="100">发布时间</th><th width="60">出售人</th><th width="60">上架</th><th width="60">推荐</th><th width="120">操作</th></tr>
         <?php if(is_array($goods["data"])): foreach($goods["data"] as $key=>$v): ?><tr><td class="t1">
                 <?php if(empty($v["category_id"])): ?><a href="<?php echo U('Goods/index','cid=0');?>">未分类</a>
                 <?php else: ?>
                     <a href="<?php echo U('Goods/index',array('cid'=>$v['category_id']));?>"><?php echo ($v["category_name"]); ?></a><?php endif; ?>
             </td>
-            <td><?php echo ($v["name"]); ?></td><td><?php echo ($v["publish_time"]); ?></td>
-            <td><a href="#" class="act-onsale" data-id="<?php echo ($v["id"]); ?>" data-status="<?php echo ($v["on_sale"]); ?>"><?php if(($v["on_sale"]) == "yes"): ?>是<?php else: ?>否<?php endif; ?></a></td>
+            <td><?php echo ($v["name"]); ?></td><td><?php echo ($v["publish_time"]); ?></td><td><?php echo ($v["seller_id"]); ?></td>
+            <td><?php if(($v["on_sale"]) == "yes"): ?>是<?php else: ?>否<?php endif; ?></td>
             <td><a href="#" class="act-recommend" data-id="<?php echo ($v["id"]); ?>" data-status="<?php echo ($v["recommend"]); ?>"><?php if(($v["recommend"]) == "yes"): ?>是<?php else: ?>否<?php endif; ?></a></td>
-            <td><a href="<?php echo U('Goods/edit',array('id'=>$v['id'],'cid'=>$v['category_id'],'p'=>$p));?>">修改</a><a href="#" class="act-del" data-id="<?php echo ($v["id"]); ?>">删除</a></td></tr><?php endforeach; endif; ?>
+            <td><a href="#" class="act-del" data-id="<?php echo ($v["id"]); ?>">删除</a></td></tr><?php endforeach; endif; ?>
     </table>
 </div>
 <div class="pagelist"><?php echo ($goods["pagelist"]); ?></div>
@@ -72,10 +72,6 @@
         $("#target_status").attr("value",(obj.attr("data-status")=="yes") ? "no" : "yes");
         $("#form").attr("action","<?php echo U('Goods/change',array('p'=>$p,'cid'=>$cid));?>").submit();
     }
-    //快捷操作-上架
-    $(".act-onsale").click(function(){
-        change_status($(this),'on_sale');
-    });
     //快捷操作-推荐
     $(".act-recommend").click(function(){
         change_status($(this),'recommend');

@@ -20,7 +20,6 @@
 		<div class="box">
 			<div class="head"><i></i><div>管理菜单</div></div>
 			<ul><li><a href="<?php echo U('Index/index');?>">后台首页</a></li>
-				<li><a href="<?php echo U('Goods/add');?>" id="Goods_add">物品添加</a></li>
 				<li><a href="<?php echo U('Goods/index');?>" id="Goods_index">物品列表</a></li>
 				<li><a href="<?php echo U('Category/add');?>" id="Category_add">分类添加</a></li>
 				<li><a href="<?php echo U('Category/index');?>" id="Category_index">分类列表</a></li>
@@ -36,12 +35,12 @@
 </div>
 <div class="list full">
 	<table>
-		<tr><th class="t1">物品分类</th><th>物品名称</th><th width="100">发布时间</th><th width="60">上架</th><th width="60">推荐</th><th width="120">操作</th></tr>
+		<tr><th class="t1">物品分类</th><th>物品名称</th><th width="100">发布时间</th><th width="60">出售人</th><th width="60">上架</th><th width="60">推荐</th><th width="120">操作</th></tr>
 		<?php if(is_array($goods["data"])): foreach($goods["data"] as $key=>$v): ?><tr>
 				<td class="t1">
 					<?php if(empty($v["category_id"])): ?>未分类<?php else: echo ($v["category_name"]); endif; ?>
 				</td>
-				<td><?php echo ($v["name"]); ?></td><td><?php echo ($v["publish_time"]); ?></td>
+				<td><?php echo ($v["name"]); ?></td><td><?php echo ($v["publish_time"]); ?></td><td><?php echo ($v["seller_id"]); ?></td>
 				<td><?php if(($v["on_sale"]) == "yes"): ?>是<?php else: ?>否<?php endif; ?></td>
 				<td><?php if(($v["recommend"]) == "yes"): ?>是<?php else: ?>否<?php endif; ?></td>
 				<td><a href="#" class="act-rec" data-id="<?php echo ($v["id"]); ?>">恢复</a>
