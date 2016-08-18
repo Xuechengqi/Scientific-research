@@ -11,6 +11,10 @@ class UserController extends CommonController{
 			$this->error('请先登录。',U('User/login'));
 		}
 	}
+	//会员中心首页
+	public function index(){
+		$this->display();
+	}
 	//用户注册
 	public function register(){
 		if(IS_POST){

@@ -54,3 +54,20 @@ function category_parent($data,$id=0){
     }
     return $rst;
 }
+/**
+* 物品列表过滤项的URL生成
+* @param $type 生成的URL类型（cid,price,order）
+* @param $data 相应的数据当前的值（为空表示清除该参数）
+* @return string 生成好的携带正确参数的URL
+*/
+function mkFilterURL($type,$data=''){
+    $params = I('get.');
+    unset($params['p']);   //清除分页
+    if($type == 'cid') unset($params['price']);  //切换分类时清除价格
+    if($data){
+        $params[$type] = $data;
+    }else{
+        unset($params[$type]);
+    }
+    return U('Index/find',$params);
+}
