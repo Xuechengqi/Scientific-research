@@ -23,5 +23,9 @@ class CategoryModel extends Model{
 		$id = max($id,0);
 		return category_family($this->getData(),$id);
 	}
+	public function getPath($id){
+		$rst = category_parent($this->getData(),$id);
+		return array_reverse($rst['pcat']);
+	}
 }
 ?>

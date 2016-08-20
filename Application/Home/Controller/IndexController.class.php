@@ -31,5 +31,25 @@ class IndexController extends CommonController{
 		$this->assign($data);
 		$this->display();
 	}
+	//物品详情页
+	public function goods(){
+		$id = I('get.id/d',0);
+		$Goods = D('Goods');
+		$Category = D('Category');
+		$data['goods'] = $Goods->getGoods(array('recycle'=>'no','on_sale'=>'yes','id'=>$id));
+		if(empty($data['goods'])){
+			$this->error('您访问的物品不存在，已下架或删除！');
+		}
+		//查找推荐物品
+		$cids = $Category->getSubIds($data['goods']['category_id']);
+		$where = array('recycle'=>'no','on_sale'=>'yes');
+		$where['category_id'] = array('in',$cids);
+		$data['recommend'] = $Goods->getRecommend($where);
+		//查找分类导航
+		$data['path'] = $Category->getPath($data['goods']['category_id']);
+		$this->assign('title',$data['goods']['name'].' -物品详情');
+		$this->assign($data);
+		$this->display();
+	}
 }
 ?>

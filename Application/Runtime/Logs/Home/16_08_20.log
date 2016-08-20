@@ -1,0 +1,6 @@
+[ 2016-08-20T11:20:47+08:00 ] 127.0.0.1 /index.php/Goods/add.html
+ERR: Think\Model:getList方法不存在！
+
+[ 2016-08-20T11:20:48+08:00 ] 127.0.0.1 /index.php/Goods/add.html
+ERR: Think\Model:getList方法不存在！
+

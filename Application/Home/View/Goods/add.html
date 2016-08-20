@@ -1,0 +1,37 @@
+<div class="title">物品添加</div>
+<div class="top-button">
+    选择物品分类：
+    <select id="category">
+        <option value="0">未分类</option>
+        <foreach name="category" item="v">
+            <option value="{$v.id}" <eq name="v.id" value="{$cid}">selected</eq>>{:str_repeat('— ',$v['level'])}{$v.name}</option>
+        </foreach>
+    </select>
+    <a href="{:U('User/goods',array('cid'=>$cid))}" class="light">物品列表</a>
+</div>
+<present name="success"><div class="mssage">添加成功。</div></present>
+<div class="list auto">
+    <form method="post" enctype="multipart/form-data">
+    <table class="t2 t4">
+        <tr><th>物品名称：</th><td><input type="text" name="name" class="big"></td></tr>
+        <tr><th>物品价格：</th><td><input type="text" name="price" class="small"></td></tr>
+        <tr><th>是否上架：</th><td><select name="on_sale"><option value="yes" selected>是</option><option value="no">否</option></select></td></tr>
+        <tr><th>上传图片：</th><td><input type="file" name="thumb" /></td></tr>
+    </table>
+    <div class="editor">
+        <include file="Goods/_editor" />
+        <script type="text/plain" id="myEditor" name="desc"><p>请在此处输入物品详情。</p></script>
+    </div>
+    <div class="btn">
+        <input type="submit" value="添加物品">
+        <input type="submit" value="添加并返回" name="return">
+    </div>
+    </form>
+</div>
+<script>
+    //下拉菜单跳转
+    $("#category").change(function(){
+        var url = "{:U('Goods/add',array('cid'=>'_ID_'))}";
+        location.href = url.replace("_ID_",$(this).val());
+    });
+</script>

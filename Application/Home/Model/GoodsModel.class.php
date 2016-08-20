@@ -57,5 +57,19 @@ class GoodsModel extends Model{
 		}
 		return $rst;
 	}
-}
+	//根据$where条件查询物品数据
+	public function getGoods($where){
+		//定义需要的字段
+		$field = 'id,category_id,name,publish_time,price,thumb,seller_id,desc';
+		return $this->field($field)->where($where)->find();
+	}
+	public function getList($type='goods',$cids=0,$p=0){
+		$order = 'g.id desc';
+		$field = 'c.name as category_name,u.name as seller_name,g.category_id,g.id,g.name';
+		if($type == 'goods'){
+			$where = array('g.recycle'=>'no');
+		}elseif($type == 'on_sale'){//需要改动
+			$where = array('g.')
+		}
+	}
 ?>

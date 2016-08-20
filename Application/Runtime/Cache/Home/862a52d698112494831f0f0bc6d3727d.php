@@ -32,29 +32,50 @@
 		<ul><li id="Index_find"><a class="category" href="<?php echo U('Index/find');?>">全部物品分类</a></li><li id="Index_index"><a href="/index.php/">首页</a></li>
 		</ul>
 	</div>
-<div class="usercenter">
-<div class="menu">
-	<div class="menu-photo">
-		<img src="/Public/Home/img/avatar.png" alt="用户头像" />
+<div class="goodsinfo">
+	<div>
+		<foreach>
+			<a href="<?php echo U('Index/find',array('cid'=>$v['id']));?>"><?php echo ($v["name"]); ?></a>
+			&nbsp;&gt;
+		</foreach>&nbsp;<?php echo ($goods["name"]); ?>
 	</div>
-	<dl><dt>物品管理</dt>
-		<dd><a href="<?php echo U('Goods/add');?>">我的二手物品</a></dd>
-		<dd><a href="">我的收藏</a></dd>
-		<dd>评价管理</dd>
-	</dl>
-	<dl><dt>我的账户</dt>
-		<dd><a href="<?php echo U('User/index');?>">个人信息</a></dd>
-		<dd>密码修改</dd>
-	</dl>
+	<div class="pic left">
+		<empty><img src="/Public/Common/img/preview.jpg" alt=""><?php else: ?><img src="/Public/Uploads/<?php echo ($goods["thumb"]); ?>" alt=""></empty>
+	</div>
+	<div class="info left">
+		<h1><?php echo ($goods["name"]); ?></h1>
+		<table>
+			<tr>
+				<th>售 价：</th>
+				<td><span class="price">￥<?php echo ($goods["price"]); ?></span></td>
+			</tr>
+			<tr>
+				<th>发布时间：</th>
+				<td><?php echo ($goods["publish_time"]); ?></td>
+			</tr>
+			<tr>
+				<th>发布人：</th>
+				<td><?php echo ($goods["seller_id"]); ?></td>
+			</tr>
+		</table>
+	</div>
+	<div class="clear"></div>
+	<div class="goods-slide left">
+		<div class="title">相关物品推荐</div>
+		<?php if(is_array($recommend)): foreach($recommend as $key=>$v): ?><ul>
+				<li></li>
+			</ul><?php endforeach; endif; ?>
+	</div>
+	<div class="desc left">
+		<div class="title">物品详情</div>
+		<div class="content"><?php echo ($goods["desc"]); ?></div>
+	</div>
+	<div class="clear"></div>
 </div>
-<div class="content">
-		<div class="title">个人资料</div>
-		<div class="showinfo">
-			<p>您好，欢迎来到会员中心！</p>
-			<p>请从左侧选择一个操作。</p>
-		</div>
-</div>
-</div>
+<script>
+//导航条选中效果
+$("#Index_find").addClass("category-curr");
+</script>
 </div>
 </body>
 </html>
