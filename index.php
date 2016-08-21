@@ -3,8 +3,8 @@
 if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 
 //生成Api模快
-//define('BIND_MODULE','Admin');
-define('BIND_MODULE','Home');
+define('BIND_MODULE','Admin');
+//define('BIND_MODULE','Home');
 
 // 开启调试模式 建议开发阶段开启 部署阶段注释或者设为false
 define('APP_DEBUG',true);

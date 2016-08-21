@@ -2,7 +2,7 @@
 namespace Home\Model;
 use Think\Model;
 class GoodsModel extends Model{
-	//获取物品列表
+	//获取物品列表（前台展示）
 	public function getList($cids=0,$p=0){
 		$field = 'category_id,id,name,price,thumb';
 		$where = array('recycle'=>'no','on_sale'=>'yes');
@@ -63,7 +63,7 @@ class GoodsModel extends Model{
 		$field = 'id,category_id,name,publish_time,price,thumb,seller_id,desc';
 		return $this->field($field)->where($where)->find();
 	}
-	public function getList($type='goods',$cids=0,$p=0){
+	/*public function getList($type='goods',$cids=0,$p=0){
 		$order = 'g.id desc';
 		$field = 'c.name as category_name,u.name as seller_name,g.category_id,g.id,g.name';
 		if($type == 'goods'){
@@ -71,5 +71,5 @@ class GoodsModel extends Model{
 		}elseif($type == 'on_sale'){//需要改动
 			$where = array('g.')
 		}
-	}
+	}*/
 ?>

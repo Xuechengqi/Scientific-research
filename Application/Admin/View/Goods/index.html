@@ -21,7 +21,14 @@
                     <a href="{:U('Goods/index',array('cid'=>$v['category_id']))}">{$v.category_name}</a>
                 </empty>
             </td>
-            <td>{$v.name}</td><td>{$v.publish_time}</td><td>{$v.seller_id}</td>
+            <td>{$v.name}</td><td>{$v.publish_time}</td>
+            <td>
+                <empty name="v.seller_id">
+                    <a href="{:U('Goods/index','seller_id=0')}">不合法</a>
+                <else />
+                    <a href="{:U('Goods/index',array('seller_id'=>$v['seller_id']))}">{$v.user_name}</a>
+                </empty>
+            </td>
             <td><eq name="v.on_sale" value="yes">是<else />否</eq></td>
             <td><a href="#" class="act-recommend" data-id="{$v.id}" data-status="{$v.recommend}"><eq name="v.recommend" value="yes">是<else />否</eq></a></td>
             <td><a href="#" class="act-del" data-id="{$v.id}">删除</a></td></tr>

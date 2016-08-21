@@ -1,0 +1,4 @@
+[ 2016-08-21T12:58:31+08:00 ] 127.0.0.1 /index.php/User/register.html
+ERR: 1054:Champ 'salt' inconnu dans field list
+ [ SQL语句 ] : INSERT INTO `user` (`username`,`salt`,`password`) VALUES ('第一人','7b294b','a0b2fa3bdbaac087ab0b3183bc376fb7')
+

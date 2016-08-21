@@ -32,7 +32,7 @@ class GoodsModel extends Model{
     public function getList($type = 'goods', $cids = 0, $p = 0){
         //准备查询条件
         $order = 'g.id desc';   //排序条件
-        $field = 'c.name as category_name,g.category_id,g.id,g.name,g.on_sale,g.publish_time,g.recommend';
+        $field = 'c.name as category_name,g.category_id,g.id,g.name,g.on_sale,g.publish_time,u.username as user_name,g.seller_id,g.recommend';
         if($type == 'goods'){   //物品列表页取数据时
             $where = array('g.recycle' => 'no');
         }elseif($type == 'recycle'){//物品回收站取数据时
@@ -50,7 +50,7 @@ class GoodsModel extends Model{
         $Page = new \Think\Page($count,$pagesize);//实例化分页类
         $this->_customPage($Page);//定制分页类样式
         //查询数据
-        $data = $this->alias('g')->join('__CATEGORY__ AS c ON c.id = g.category_id','LEFT')->field($field)->where($where)->order($order)->page($p,$pagesize)->select();
+        $data = $this->alias('g')->join('__CATEGORY__ AS c ON c.id = g.category_id','LEFT')->join('__USER__ AS u ON u.id = g.seller_id','LEFT')->field($field)->where($where)->order($order)->page($p,$pagesize)->select();
         //返回结果
         return array(
             'data' => $data,         //物品列表数组
