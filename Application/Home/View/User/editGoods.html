@@ -1,0 +1,52 @@
+<div class="usercenter">
+<include file="User/_menu" />
+<div class="content">
+	<div class="title">我的二手物品——<span>修改物品信息</span></div>
+	<div class="top-button">
+		修改物品分类：<select id="category">
+			<option value="0">未分类</option>
+			<foreach name="category" item="v">
+				<option value="{$v.id}" <eq name="v.id" value="$cid">selected</eq>>{:str_repeat('— ',$v['level'])}{$v.name}</option>
+			</foreach>
+		</select>
+		<a href="{:U('User/Goods',array('cid'=>$cid,'p'=>$p))}" class="light">返回物品列表</a>
+	</div>
+	<present name="success"><div class="mssage">修改成功。</div></present>
+	<div class="list auto">
+		<form method="post" enctype="multipart/form-data">
+		<input type="hidden" name="id" value="{$goods.id}">
+		<table class="t2 t4">
+			<tr><th>物品名称：</th><td><input type="text" name="name" value="{$goods.name}" class="big"></td></tr>
+			<tr><th>物品价格：</th><td><input type="text" name="price" value="{$goods.price}" class="small"></td></tr>
+			<tr><th>是否出售：</th><td><select name="on_sale">
+				<option value="yes" <eq name="goods.on_sale" value="yes">selected</eq>>是</option>
+					<option value="no" <eq name="goods.on_sale" value="no">selected</eq>>否</option>
+			</select></td></tr>
+			<tr><th>修改图片：</th><td><input type="file" name="thumb" /></td></tr>
+			<tr><th>当前图片：</th><td>
+				<empty name="goods.thumb">
+					<img src="__PUBLIC__/Common/img/preview.jpg">
+				<else/>
+					<img src="__PUBLIC__/Uploads/small/{$goods.thumb}">
+				</empty>
+			</td></tr>
+		</table>
+		<div class="editor">
+			<include file="User/_editor" />
+			<script type="text/plain" id="myEditor" name="desc">{$goods.desc}</script>
+		</div>
+		<div class="btn">
+			<input type="submit" value="保存修改">
+			<input type="submit" value="修改并返回" name="return">
+		</div>
+		</form>
+	</div>
+</div>
+</div>
+<script>
+	//下拉菜单跳转
+	$("#category").change(function(){
+		var url = "{:U('User/editGoods',array('id'=>$id,'cid'=>'_ID_','p'=>$p))}";
+		location.href = url.replace("_ID_",$(this).val());
+	});
+</script>

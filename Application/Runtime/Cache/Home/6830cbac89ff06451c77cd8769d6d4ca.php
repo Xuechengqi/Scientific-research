@@ -38,7 +38,7 @@
 		<img src="/Public/Home/img/avatar.png" alt="用户头像" />
 	</div>
 	<dl><dt>物品管理</dt>
-		<dd><a href="<?php echo U('Goods/add');?>">我的二手物品</a></dd>
+		<dd><a href="<?php echo U('User/goods');?>">我的二手物品</a></dd>
 		<dd><a href="">我的收藏</a></dd>
 		<dd>评价管理</dd>
 	</dl>

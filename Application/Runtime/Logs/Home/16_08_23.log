@@ -1,0 +1,15 @@
+[ 2016-08-23T12:17:43+08:00 ] 127.0.0.1 /index.php/User/add.html
+ERR: Think\Model:getList方法不存在！
+
+[ 2016-08-23T12:22:42+08:00 ] 127.0.0.1 /index.php/Goods/add/cid/3.html
+ERR: 模板不存在:./Application/Home/View/Goods/add.html
+
+[ 2016-08-23T12:22:57+08:00 ] 127.0.0.1 /index.php/Goods/add/cid/1.html
+ERR: 模板不存在:./Application/Home/View/Goods/add.html
+
+[ 2016-08-23T12:23:30+08:00 ] 127.0.0.1 /index.php/Goods/add/cid/3.html
+ERR: 模板不存在:./Application/Home/View/Goods/add.html
+
+[ 2016-08-23T15:06:17+08:00 ] 127.0.0.1 /index.php/
+ERR: Think\Controller:alias方法不存在！
+

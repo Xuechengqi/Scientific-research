@@ -49,9 +49,7 @@
             </td>
             <td><?php echo ($v["name"]); ?></td><td><?php echo ($v["publish_time"]); ?></td>
             <td>
-                <?php if(empty($v["seller_id"])): ?><a href="<?php echo U('Goods/index','seller_id=0');?>">不合法</a>
-                <?php else: ?>
-                    <a href="<?php echo U('Goods/index',array('seller_id'=>$v['seller_id']));?>"><?php echo ($v["user_name"]); ?></a><?php endif; ?>
+                <?php if(empty($v["seller_id"])): ?>不合法<?php else: echo ($v["user_name"]); endif; ?>
             </td>
             <td><?php if(($v["on_sale"]) == "yes"): ?>是<?php else: ?>否<?php endif; ?></td>
             <td><a href="#" class="act-recommend" data-id="<?php echo ($v["id"]); ?>" data-status="<?php echo ($v["recommend"]); ?>"><?php if(($v["recommend"]) == "yes"): ?>是<?php else: ?>否<?php endif; ?></a></td>

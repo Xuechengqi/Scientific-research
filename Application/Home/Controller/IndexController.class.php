@@ -6,9 +6,9 @@ class IndexController extends CommonController{
 	public function index(){
 		$data['category'] = D('Category')->getTree();//获得分类列表
 		//准备查询条件（推荐物品、已上架、不在回收站中）
-		$where = array('recommend'=>'yes','on_sale'=>'yes','recycle'=>'no');
-		//取出物品ID、物品名、出售人ID、物品价格、物品图片
-		$data['best'] = M('Goods')->field('id,name,seller_id,price,thumb')->where($where)->limit(6)->select();
+		$where = array('recommend'=>'yes','on_sale'=>'yes','recycle'=>'no');		
+		//取出物品ID、物品名、出售人、物品价格、物品图片
+		$data['best'] = M('Goods')->alias('g')->join('__USER__ AS u ON u.id=g.seller_id','LEFT')->field('u.username as user_name,g.id,g.name,g.seller_id,g.price,g.thumb')->where($where)->limit(6)->select();
 		$this->assign($data);
 		$this->display();
 	}

@@ -23,11 +23,7 @@
             </td>
             <td>{$v.name}</td><td>{$v.publish_time}</td>
             <td>
-                <empty name="v.seller_id">
-                    <a href="{:U('Goods/index','seller_id=0')}">不合法</a>
-                <else />
-                    <a href="{:U('Goods/index',array('seller_id'=>$v['seller_id']))}">{$v.user_name}</a>
-                </empty>
+                <empty name="v.seller_id">不合法<else />{$v.user_name}</empty>
             </td>
             <td><eq name="v.on_sale" value="yes">是<else />否</eq></td>
             <td><a href="#" class="act-recommend" data-id="{$v.id}" data-status="{$v.recommend}"><eq name="v.recommend" value="yes">是<else />否</eq></a></td>

@@ -1,0 +1,52 @@
+<div class="usercenter">
+<include file="User/_menu" />
+<div class="content">
+		<div class="title">我的二手物品</div>
+		<a href="{:U('User/add')}" class="light"><input type="button" value="添加商品" /></a>
+		<div class="list full">
+			<table>
+				<tr><th class="t1" width="120">商品分类</th><th width="120">商品名称</th><th width="120">发布时间</th><th width="120">价格</th><th width="120">是否出售</th><th width="120">操作</th></tr>
+				<foreach name="goods.data" item="v">
+					<tr><td class="t1">
+						<empty name="v.category_id">
+							未分类
+						<else/>
+							{$v.category_name}
+						</empty>
+					</td>
+					<td>{$v.name}</td>
+					<td>{$v.publish_time}</td>
+					<td>{$v.price}</td>
+					<td><a href="#" class="act-onsale" data-id="{$v.id}" data-status="{$v.on_sale}"><eq name="v.on_sale" value="yes">是<else/>否</eq></a></td><td>
+					<a href="{:U('User/editGoods',array('id'=>$v['id'],'cid'=>$v['category_id'],'p'=>$p))}">修改</a>　<a href="#" class="act-del" data-id="{$v.id}">删除</a></td></tr>
+				</foreach>
+			</table>
+		</div>
+		<div class="pagelist">{$goods.pagelist}</div>
+		<form method="post" id="form">
+			<input type="hidden" name="id" id="target_id">
+			<input type="hidden" name="field" id="target_field">
+			<input type="hidden" name="status" id="target_status">
+		</form>
+		</div>
+</div>
+<script>
+	//快捷操作
+	function change_status(obj,field){
+		$("#target_id").val(obj.attr("data-id"));
+		$("#target_field").attr("value",field)
+		$("#target_status").attr("value",(obj.attr("data-status")=="yes") ? "no" : "yes");
+		$("#form").attr("action","{:U('User/change',array('p'=>$p,'cid'=>$cid))}").submit();
+	}
+	//快捷操作-上架
+	$(".act-onsale").click(function(){
+		change_status($(this),'on_sale');
+	});
+	//快捷操作-删除
+	$(".act-del").click(function(){
+		if(confirm('确定要删除吗？')){
+			$("#target_id").val($(this).attr("data-id"));
+			$("#form").attr("action","{:U('User/del',array('p'=>$p,'cid'=>$cid))}").submit();
+		}
+	});
+</script>

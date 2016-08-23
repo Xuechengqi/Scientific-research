@@ -8,7 +8,12 @@ class CategoryModel extends Model{
 		if(!$data) $data = $this->field('id,name,pid')->select();
 		return $data;
 	}
-	//获得分类列表
+	//获得分类列表（个人中心物品操作）
+	public function getList(){
+		category_list($this->getData(),$data);
+		return $data;
+	}
+	//获得分类列表（前台展示）
 	public function getTree($level=3){
 		return category_tree($this->getData(),0,$level);
 	}

@@ -174,92 +174,12 @@ body{min-width:755px;color:#666;font-size:14px;}
 .usercenter .menu dl dd a{color:#455E65;}
 .usercenter .menu dl dd a:hover{color:#7FB8D2;}
 .usercenter .content{float:left;width:1035px;padding:0 10px 10px;border:1px solid #D5E5F5;}
-.usercenter .content .title{margin-bottom:10px;font-size:14px;border-bottom:1px solid #AED2FF;line-height:30px;height:30px;font-weight:700;text-indent:15px;color:#333;font-family:'Microsoft YaHei';}
-.usercenter .content table{border-collapse:collapse;font-size:12px;font-family:Verdana,"Microsoft YaHei";color:#333;}
+.usercenter .content .title{margin-bottom:10px;font-size:28px;border-bottom:1px solid #AED2FF;line-height:40px;height:40px;font-weight:700;text-indent:15px;color:#333;font-family:'Microsoft YaHei';}
+.usercenter .content .title span{font-size:18px;}
+.usercenter .content table{border-collapse:collapse;font-size:14px;font-family:Verdana,"Microsoft YaHei";color:#333;}
+/*物品列表*/
+table td{vertical-align: middle;text-align: center;}
+/*修改页面*/
+.usercenter .content .top-button{height:20px;font-family: Verdana,"Microsoft YaHei";font-size:14px;font-weight: bold;color:#333;margin-top: 8px;margin-bottom: 8px;}
+.usercenter .content .top-button a{color:#666;border:1px solid #E3E3E3;margin-left: 126px;}
 
-/*购物车*/
-.usercenter .shopcart{width:100%;margin:0 auto;}
-.usercenter .shopcart th{border-bottom:2px solid #B2D1FF;font-weight:normal;height:35px;line-height:23px;}
-.usercenter .shopcart td{height:55px;}
-.usercenter .shopcart tr.item{background-color:#FAFCFF;border-bottom:1px dotted #84B3FD;}
-.usercenter .shopcart .setNum{padding:0;width:16px;height:16px;color:#FFF;background-color:#BDBDBD;border:0;cursor:pointer;border-radius:2px;}
-.usercenter .shopcart .setNum:hover{background-color:#FF9900;}
-.usercenter .shopcart .item-num{margin:5px;width:35px;text-align:center;height:20px;line-height:20px;padding:0 3px;}
-.usercenter .shopcart .item-price{color:#FF3334;font-weight:bold;font-family:"Microsoft YaHei";}
-.usercenter .shopcart .price{color:#FF3334;font-weight:bold;font-family:"Microsoft YaHei";font-size:16px;}
-.usercenter .shopcart .act td{background:#fff;border-bottom:0;}
-.usercenter .shopcart a{color:#3366D4;}
-.usercenter .shopcart .order-btn{color:#FFF;font-size:14px;font-weight:600;cursor:pointer;margin:0 20px;background:#FE8502;border:1px solid #FF6633;border-radius:5px 5px 5px 5px;padding:6px 12px;}
-.usercenter .shopcart .order-btn:hover{background:#FF6600;}
-
-/*收货地址*/
-.usercenter .addr{width:500px;margin-left:30px;}
-.usercenter .addr tr{border-bottom:1px solid #ddd;height:40px;line-height:40px;}
-.usercenter .addr th{text-align:right;}
-.usercenter .addr-a{color:#FFF;font-size:14px;font-weight:600;cursor:pointer;background:#FE8502;border:1px solid #FF6633;border-radius:5px 5px 5px 5px;padding:6px 12px;margin:10px 0 10px 80px;display:inline-block;}
-.usercenter .addr-a:hover{background-color:#FF6600;text-decoration:none;}
-.usercenter .addr .act input{padding:3px 15px;margin-right:10px;cursor:pointer;}
-.usercenter .addr select{padding:3px 2px;border:1px solid #ccc;color:#333;}
-.usercenter .addr input[type=text]{padding:3px 2px;border:1px solid #ccc;color:#333;}
-
-/*订单列表*/
-.usercenter .order-top{width:100%;background-color:#EDF5FF;border:1px solid #C4D5E0;border-bottom:0;}
-.usercenter .order-top .act{text-align:right;padding-right:22px;}
-.usercenter .order-top th{padding:10px;font-weight:normal;text-align:left;text-indent:12px;}
-.usercenter .order-top td{padding:10px;}
-.usercenter .order-top span{color:#390;}
-.usercenter .order-top strong{font-family:"Microsoft YaHei";color:#f60;}
-.usercenter .order-top a{color:#7466CC;}
-.usercenter .order-top a:hover{color:#FF542F;}
-.usercenter .order{width:100%;margin-bottom:10px;}
-.usercenter .order td{border:1px solid #C4D5E0;padding:10px 20px;}
-.usercenter .order a{color:#0579C6;}
-.usercenter .order span{font-family:"Microsoft YaHei";color:#f60;}
-
-
-
-/*
-.usercenter{margin:20px auto;overflow:hidden;}
-.usercenter .menu{width:140px;border:1px solid #FFE4C5;text-align:center;}
-.usercenter .menu li{margin:5px;padding:8px;;background:#FFF4E8;}
-.usercenter .menu .curr{color:#FF8A15;font-weight:bold;}
-.usercenter .menu a{color:#E4393C;}
-.usercenter .content{margin:10px 20px;}
-.usercenter table{border-collapse:collapse;width:500px;margin:20px;}
-.usercenter tr,.usercenter td,.usercenter th{ border: 1px solid #FFC4C0;height:24px;}
-.usercenter th{font-weight:normal;text-align:right;}
-.usercenter td,.usercenter th{padding:8px;}
-.usercenter a{color:#E4393C;}
-.usercenter input{width:300px;border:1px solid #ccc;height:23px}
-.usercenter .button input{width:55px;height:26px;margin:0 20px;background:#FFF4F0;border:1px solid #FFC4C0;cursor:pointer;}
-.usercenter .button input:hover{background:#FFE4E0;}
-*/
-
-/*购物车*/
-/*
-.usercenter .shopcart{width:800px; background:#FCFCFC;}
-.usercenter .shopcart tr{border: 1px solid #FFC4C0;}
-.usercenter .shopcart th{width:auto;text-align:center;}
-.usercenter .shopcart .w50{width:50px;}
-.usercenter .shopcart .w92{width:92px;}
-.usercenter .shopcart input{width:10px;}
-.usercenter .shopcart .check{width:15px;}
-.usercenter .shopcart .setNum{width:20px;height:20px;background: #FFF4F0;border: 1px solid #FFC4C0;cursor:pointer;}
-.usercenter .shopcart .setNum:hover{background:#FFE4E0;}
-.usercenter .shopcart .item-num{margin:5px;width:35px;text-align: center;}
-.usercenter .shopcart .order-btn{width:80px;cursor:pointer;margin:0 20px;background:#FFF0E7;color:#FF4400;border:1px solid #FFE1D3;}
-.usercenter .shopcart .tr-tit{background:#FFF4E8;}
-.usercenter .shopcart .item-price{color:#E4393C;font-weight:bold;font-family:"Microsoft YaHei";}
-.usercenter .shopcart .price{color:#E4393C;font-weight:bold;font-family:"Microsoft YaHei";}
-*/
-/*订单列表*/
-/*
-.usercenter .order{min-width:700px;}
-.usercenter .order th{text-align:center;}
-.usercenter .order .tr-tit{background:#FFF4E8;}
-.usercenter .order .txt-left{text-align:left;}
-.usercenter .order .txt-center{text-align:center;}
-.usercenter .order span{font-family:"Microsoft YaHei";}
-.usercenter .order .order-btn{width:80px;cursor:pointer;margin:0 20px;background:#FFF;color:#FF4400;border:1px solid #FFE1D3;}
-.usercenter .order .gname{text-indent:12px;}
-.usercenter .empty{margin-top:20px;}*/

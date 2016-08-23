@@ -21,7 +21,9 @@
 			</tr>
 			<tr>
 				<th>发布人：</th>
-				<td>{$goods.seller_id}</td>
+				<td>
+					<empty name="v.seller_id">不合法<else />{$v.user_name}</empty>
+				</td>
 			</tr>
 		</table>
 	</div>

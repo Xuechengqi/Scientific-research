@@ -60,6 +60,7 @@
 		<?php if(is_array($goods["data"])): foreach($goods["data"] as $key=>$v): ?><ul class="item left">
 			<li><a href="<?php echo U('Index/goods',array('id'=>$v['id']));?>" target="_blank"><?php if(empty($v["thumb"])): ?><img src="/Public/Common/img/preview.jpg"><?php else: ?><img src="/Public/Uploads/small/<?php echo ($v["thumb"]); ?>"><?php endif; ?></a></li>
 			<li class="goods"><a href="<?php echo U('Index/goods',array('id'=>$v['id']));?>" target="_blank"><?php echo ($v["name"]); ?></a></li>
+			<li class="seller"><?php echo ($v["user_name"]); ?></li>
 			<li class="price">￥<?php echo ($v["price"]); ?></li>
 		</ul><?php endforeach; endif; ?>
 		<div class="clear"></div>

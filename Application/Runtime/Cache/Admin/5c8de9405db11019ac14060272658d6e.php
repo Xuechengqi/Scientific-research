@@ -40,7 +40,10 @@
 				<td class="t1">
 					<?php if(empty($v["category_id"])): ?>未分类<?php else: echo ($v["category_name"]); endif; ?>
 				</td>
-				<td><?php echo ($v["name"]); ?></td><td><?php echo ($v["publish_time"]); ?></td><td><?php echo ($v["seller_id"]); ?></td>
+				<td><?php echo ($v["name"]); ?></td><td><?php echo ($v["publish_time"]); ?></td>
+				<td>
+					<?php if(empty($v["seller_id"])): ?>不合法<?php else: echo ($v["user_name"]); endif; ?>
+				</td>
 				<td><?php if(($v["on_sale"]) == "yes"): ?>是<?php else: ?>否<?php endif; ?></td>
 				<td><?php if(($v["recommend"]) == "yes"): ?>是<?php else: ?>否<?php endif; ?></td>
 				<td><a href="#" class="act-rec" data-id="<?php echo ($v["id"]); ?>">恢复</a>
