@@ -32,52 +32,40 @@
 		<ul><li id="Index_find"><a class="category" href="<?php echo U('Index/find');?>">全部物品分类</a></li><li id="Index_index"><a href="/index.php/">首页</a></li>
 		</ul>
 	</div>
-<div class="goodsinfo">
-	<div>
-		<foreach>
-			<a href="<?php echo U('Index/find',array('cid'=>$v['id']));?>"><?php echo ($v["name"]); ?></a>
-			&nbsp;&gt;
-		</foreach>&nbsp;<?php echo ($goods["name"]); ?>
+<div class="usercenter">
+<div class="menu">
+	<div class="menu-photo">
+		<img src="/Public/Home/img/avatar.png" alt="用户头像" />
 	</div>
-	<div class="pic left">
-		<empty><img src="/Public/Common/img/preview.jpg" alt=""><?php else: ?><img src="/Public/Uploads/big/<?php echo ($goods["thumb"]); ?>" alt=""></empty>
-	</div>
-	<div class="info left">
-		<h1><?php echo ($goods["name"]); ?></h1>
-		<table>
-			<tr>
-				<th>售 价：</th>
-				<td><span class="price">￥<?php echo ($goods["price"]); ?></span></td>
-			</tr>
-			<tr>
-				<th>发布时间：</th>
-				<td><?php echo ($goods["publish_time"]); ?></td>
-			</tr>
-			<tr>
-				<th>发布人：</th>
-				<td>
-					<?php if(empty($v["seller_id"])): ?>不合法<?php else: echo ($v["user_name"]); endif; ?>
-				</td>
-			</tr>
-		</table>
-	</div>
-	<div class="clear"></div>
-	<div class="goods-slide left">
-		<div class="title">相关物品推荐</div>
-		<?php if(is_array($recommend)): foreach($recommend as $key=>$v): ?><ul>
-				<li></li>
-			</ul><?php endforeach; endif; ?>
-	</div>
-	<div class="desc left">
-		<div class="title">物品详情</div>
-		<div class="content"><?php echo ($goods["desc"]); ?></div>
-	</div>
-	<div class="clear"></div>
+	<dl><dt>物品管理</dt>
+		<dd><a href="<?php echo U('User/goods');?>">我的二手物品</a></dd>
+		<dd><a href="">我的收藏</a></dd>
+		<dd>评价管理</dd>
+	</dl>
+	<dl><dt>我的账户</dt>
+		<dd><a href="<?php echo U('User/info');?>">个人信息修改</a></dd>
+		<dd>密码修改</dd>
+	</dl>
 </div>
-<script>
-//导航条选中效果
-$("#Index_find").addClass("category-curr");
-</script>
+<div class="content">
+		<div class="title">个人资料</div>
+		<div class="showinfo">
+			<form method="post">
+				当前头像：
+				<p>
+					<?php if(empty($user["avatar"])): ?><img src="/Public/Home/img/avatar.png" alt="用户头像">
+					<?php else: ?>
+						<img src="/Public/Uploads/headimg/<?php echo ($user["avatar"]); ?>"><?php endif; ?>
+				</p>
+				<p>上传头像：<input type="file" name="avatar" /></p>
+				<p>用户名：<input type="text" name="username" disabled="disabled" /></p>
+				<p>电话号码：<input type="tel" name="telephone" /></p>
+				<p>email：<input type="email" name="email" /></p>
+				<p><input type="submit" value="保存信息" /></p>
+			</form>
+		</div>
+</div>
+</div>
 </div>
 </body>
 </html>

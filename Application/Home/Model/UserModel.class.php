@@ -32,5 +32,10 @@ class UserModel extends Model{
 		}
 		return false;
 	}
+	//查找用户信息
+	public function getInfo($where,$field){
+		$data = $this->field($field)->where($where)->find();
+		return $data;
+	}
 }
 ?>

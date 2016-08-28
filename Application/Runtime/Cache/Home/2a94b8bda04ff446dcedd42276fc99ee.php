@@ -64,8 +64,6 @@
 <script>
 	slideBox("#hot",5000);  //焦点图切换
 </script>
-<!--新闻列表-->
-<div class="news right">最新动态</div>
 <div class="clear"></div>
 <!--推荐商品-->
 <div class="best">

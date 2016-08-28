@@ -1,0 +1,23 @@
+<div class="usercenter">
+<include file="User/_menu" />
+<div class="content">
+		<div class="title">个人资料</div>
+		<div class="showinfo">
+			<form method="post">
+				当前头像：
+				<p>
+					<empty name="user.avatar">
+						<img src="__PUBLIC__/Home/img/avatar.png" alt="用户头像">
+					<else/>
+						<img src="__PUBLIC__/Uploads/headimg/{$user.avatar}">
+					</empty>
+				</p>
+				<p>上传头像：<input type="file" name="avatar" /></p>
+				<p>用户名：<input type="text" name="username" disabled="disabled" /></p>
+				<p>电话号码：<input type="tel" name="telephone" /></p>
+				<p>email：<input type="email" name="email" /></p>
+				<p><input type="submit" value="保存信息" /></p>
+			</form>
+		</div>
+</div>
+</div>

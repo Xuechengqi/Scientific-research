@@ -13,6 +13,15 @@ class UserController extends CommonController{
 	}
 	//会员中心首页
 	public function index(){
+		$User = D('User');
+		$userid = (int)SESSION()['userinfo']['id'];
+		$username = SESSION()['userinfo']['name'];
+		if(SESSION() != null){
+			$where = array('id'=>$userid,'username'=>$username);
+			$field = 'username,phone,email';
+		}
+		$data = $User->getInfo($where,$field);
+		$this->assign('data',$data);
 		$this->display();
 	}
 	//用户注册
@@ -196,7 +205,7 @@ class UserController extends CommonController{
 			$Goods->desc = I('post.desc','','htmlpurifier');
 			$Goods->seller_id = $userid;
 			if(!empty($_FILES['thumb']['tmp_name'])){
-				$rst = $Goods->uploadThumb();
+				$rst = $Goods->uploadThumb('thumb');
 				if(!$rst['flag']){
 					$this->error('上传图片失败：'.$rst['error']);
 				}
@@ -213,6 +222,11 @@ class UserController extends CommonController{
 		$data['category'] = $Category->getList();
 		$data['cid'] = $cid;
 		$this->assign($data);
+		$this->display();
+	}
+	//修改个人信息
+	public function info(){
+		$userid = (int)SESSION()['userinfo']['id'];
 		$this->display();
 	}
 }

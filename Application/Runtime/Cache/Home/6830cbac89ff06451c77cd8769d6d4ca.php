@@ -43,7 +43,7 @@
 		<dd>评价管理</dd>
 	</dl>
 	<dl><dt>我的账户</dt>
-		<dd><a href="<?php echo U('User/index');?>">个人信息</a></dd>
+		<dd><a href="<?php echo U('User/info');?>">个人信息修改</a></dd>
 		<dd>密码修改</dd>
 	</dl>
 </div>
@@ -52,6 +52,9 @@
 		<div class="showinfo">
 			<p>您好，欢迎来到会员中心！</p>
 			<p>请从左侧选择一个操作。</p>
+			<p>用户名：<?php echo ($data["username"]); ?></p>
+			<p>电话号码：<?php echo ($data["phone"]); ?></p>
+			<p>email：<?php echo ($data["email"]); ?></p>
 		</div>
 </div>
 </div>
