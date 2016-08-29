@@ -18,10 +18,10 @@ class UserController extends CommonController{
 		$username = SESSION()['userinfo']['name'];
 		if(SESSION() != null){
 			$where = array('id'=>$userid,'username'=>$username);
-			$field = 'username,phone,email';
+			$field = 'username,phone,email,avatar';
 		}
 		$data = $User->getInfo($where,$field);
-		$this->assign('data',$data);
+		$this->assign('user',$data);
 		$this->display();
 	}
 	//用户注册
@@ -87,13 +87,18 @@ class UserController extends CommonController{
 	public function goods(){
 		$p = I('get.p/d',0);
 		$Goods = D('Goods');
+		$User = D('User');
 		$userid = (int)SESSION()['userinfo']['id'];
+		$field = 'username,avatar';
+		$where = array('id'=>$userid);
+		$user = $User->getInfo($where,$field);
 		$data['goods'] = $Goods->getMyGoods($userid,$p);
 		//防止空页被访问
 		if(empty($data['goods']['data']) && $p > 0){
 			$this->redirect('User/goods');
 		}
 		$data['p'] = $p;
+		$this->user = $user;
 		$this->assign($data);
 		$this->display();
 	}
@@ -227,6 +232,30 @@ class UserController extends CommonController{
 	//修改个人信息
 	public function info(){
 		$userid = (int)SESSION()['userinfo']['id'];
+		$User = D('User');
+		$where = array('id'=>$userid);
+		if(IS_POST){
+			if(!$User->create(null,2)){
+				$this->error('修改个人信息失败：'.$User->getError());
+			}
+			$User->phone = I('post.phone');
+			$User->email = I('post.email');
+			if(isset($_FILES['avatar']) && $_FILES['avatar']['error'] === 0){
+				$rst = $User->uploadAvatar($userid,'avatar');
+				if(!$rst['flag']){
+					$this->error('上传头像失败：'.$rst['error']);
+				}
+				$User->avatar = $rst['path'];
+				$User->delAvatarFile($where);
+			}
+			if(false === $User->where($where)->save()){
+				$this->error('修改个人信息失败！');
+			}
+			$this->assign('success',true);
+		}
+		$field = 'username,phone,email,avatar';
+		$data = $User->getInfo($where,$field);
+		$this->assign('user',$data);
 		$this->display();
 	}
 }

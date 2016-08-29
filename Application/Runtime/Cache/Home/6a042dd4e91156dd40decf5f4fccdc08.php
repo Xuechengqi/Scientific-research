@@ -35,7 +35,9 @@
 <div class="usercenter">
 <div class="menu">
 	<div class="menu-photo">
-		<img src="/Public/Home/img/avatar.png" alt="用户头像" />
+		<?php if(empty($user["avatar"])): ?><img src="/Public/Home/img/avatar.png" alt="用户头像">
+		<?php else: ?>
+			<img src="/Public/Uploads/headimg/<?php echo ($user["avatar"]); ?>"><?php endif; ?>
 	</div>
 	<dl><dt>物品管理</dt>
 		<dd><a href="<?php echo U('User/goods');?>">我的二手物品</a></dd>
@@ -49,8 +51,9 @@
 </div>
 <div class="content">
 		<div class="title">个人资料</div>
+		<?php if(isset($success)): ?><div class="mssage">修改成功。</div><?php endif; ?>
 		<div class="showinfo">
-			<form method="post">
+			<form method="post" enctype="multipart/form-data">
 				当前头像：
 				<p>
 					<?php if(empty($user["avatar"])): ?><img src="/Public/Home/img/avatar.png" alt="用户头像">
@@ -58,9 +61,9 @@
 						<img src="/Public/Uploads/headimg/<?php echo ($user["avatar"]); ?>"><?php endif; ?>
 				</p>
 				<p>上传头像：<input type="file" name="avatar" /></p>
-				<p>用户名：<input type="text" name="username" disabled="disabled" /></p>
-				<p>电话号码：<input type="tel" name="telephone" /></p>
-				<p>email：<input type="email" name="email" /></p>
+				<p>用户名：<input type="text" name="username" disabled="disabled" value="<?php echo ($user["username"]); ?>" /></p>
+				<p>电话号码：<input type="tel" name="phone" value="<?php echo ($user["phone"]); ?>" /></p>
+				<p>email：<input type="email" name="email" value="<?php echo ($user["email"]); ?>" /></p>
 				<p><input type="submit" value="保存信息" /></p>
 			</form>
 		</div>

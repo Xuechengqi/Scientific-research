@@ -1,12 +1,12 @@
 <div class="goodsinfo">
-	<div>
-		<foreach>
-			<a href="{:U('Index/find',array('cid'=>$v['id']))}">{$v.name}</a>
+	<div class="now_cat">当前位置：
+		<foreach name="path" item="v">
+			&nbsp;<a href="{:U('Index/find',array('cid'=>$v['id']))}">{$v.name}</a>
 			&nbsp;&gt;
 		</foreach>&nbsp;{$goods.name}
 	</div>
 	<div class="pic left">
-		<empty><img src="__PUBLIC__/Common/img/preview.jpg" alt=""><else /><img src="__PUBLIC__/Uploads/big/{$goods.thumb}" alt=""></empty>
+		<empty name="goods.thumb"><img src="__PUBLIC__/Common/img/preview.jpg" alt=""><else /><img src="__PUBLIC__/Uploads/big/{$goods.thumb}" alt=""></empty>
 	</div>
 	<div class="info left">
 		<h1>{$goods.name}</h1>
@@ -22,7 +22,19 @@
 			<tr>
 				<th>发布人：</th>
 				<td>
-					<empty name="v.seller_id">不合法<else />{$v.user_name}</empty>
+					<empty name="goods.seller_id">不合法<else />{$user.username}</empty>
+				</td>
+			</tr>
+			<tr>
+				<th>联系电话：</th>
+				<td>
+					{$user.phone}
+				</td>
+			</tr>
+			<tr>
+				<th>邮箱：</th>
+				<td>
+					{$user.email}
 				</td>
 			</tr>
 		</table>

@@ -43,7 +43,7 @@
 		<dd>评价管理</dd>
 	</dl>
 	<dl><dt>我的账户</dt>
-		<dd><a href="<?php echo U('User/index');?>">个人信息</a></dd>
+		<dd><a href="<?php echo U('User/info');?>">个人信息修改</a></dd>
 		<dd>密码修改</dd>
 	</dl>
 </div>

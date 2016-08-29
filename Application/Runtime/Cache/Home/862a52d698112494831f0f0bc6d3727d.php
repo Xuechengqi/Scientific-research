@@ -33,14 +33,12 @@
 		</ul>
 	</div>
 <div class="goodsinfo">
-	<div>
-		<foreach>
-			<a href="<?php echo U('Index/find',array('cid'=>$v['id']));?>"><?php echo ($v["name"]); ?></a>
-			&nbsp;&gt;
-		</foreach>&nbsp;<?php echo ($goods["name"]); ?>
+	<div class="now_cat">当前位置：
+		<?php if(is_array($path)): foreach($path as $key=>$v): ?>&nbsp;<a href="<?php echo U('Index/find',array('cid'=>$v['id']));?>"><?php echo ($v["name"]); ?></a>
+			&nbsp;&gt;<?php endforeach; endif; ?>&nbsp;<?php echo ($goods["name"]); ?>
 	</div>
 	<div class="pic left">
-		<empty><img src="/Public/Common/img/preview.jpg" alt=""><?php else: ?><img src="/Public/Uploads/big/<?php echo ($goods["thumb"]); ?>" alt=""></empty>
+		<?php if(empty($goods["thumb"])): ?><img src="/Public/Common/img/preview.jpg" alt=""><?php else: ?><img src="/Public/Uploads/big/<?php echo ($goods["thumb"]); ?>" alt=""><?php endif; ?>
 	</div>
 	<div class="info left">
 		<h1><?php echo ($goods["name"]); ?></h1>
@@ -56,7 +54,19 @@
 			<tr>
 				<th>发布人：</th>
 				<td>
-					<?php if(empty($v["seller_id"])): ?>不合法<?php else: echo ($v["user_name"]); endif; ?>
+					<?php if(empty($goods["seller_id"])): ?>不合法<?php else: echo ($user["username"]); endif; ?>
+				</td>
+			</tr>
+			<tr>
+				<th>联系电话：</th>
+				<td>
+					<?php echo ($user["phone"]); ?>
+				</td>
+			</tr>
+			<tr>
+				<th>邮箱：</th>
+				<td>
+					<?php echo ($user["email"]); ?>
 				</td>
 			</tr>
 		</table>

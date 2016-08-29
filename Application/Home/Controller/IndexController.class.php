@@ -36,10 +36,13 @@ class IndexController extends CommonController{
 		$id = I('get.id/d',0);
 		$Goods = D('Goods');
 		$Category = D('Category');
+		$User = D('User');
 		$data['goods'] = $Goods->getGoods(array('recycle'=>'no','on_sale'=>'yes','id'=>$id));
 		if(empty($data['goods'])){
 			$this->error('您访问的物品不存在，已下架或删除！');
 		}
+		//查找发布人信息
+		$data['user'] = $User->getInfo(array('id'=>$data['goods']['seller_id']),'username,phone,email');
 		//查找推荐物品
 		$cids = $Category->getSubIds($data['goods']['category_id']);
 		$where = array('recycle'=>'no','on_sale'=>'yes');

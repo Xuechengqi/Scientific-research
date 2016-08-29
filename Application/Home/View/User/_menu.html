@@ -1,6 +1,10 @@
 <div class="menu">
 	<div class="menu-photo">
-		<img src="__PUBLIC__/Home/img/avatar.png" alt="用户头像" />
+		<empty name="user.avatar">
+			<img src="__PUBLIC__/Home/img/avatar.png" alt="用户头像">
+		<else/>
+			<img src="__PUBLIC__/Uploads/headimg/{$user.avatar}">
+		</empty>
 	</div>
 	<dl><dt>物品管理</dt>
 		<dd><a href="{:U('User/goods')}">我的二手物品</a></dd>

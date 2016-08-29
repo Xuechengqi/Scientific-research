@@ -71,3 +71,17 @@ function mkFilterURL($type,$data=''){
     }
     return U('Index/find',$params);
 }
+
+//通过开源组件HTML Purifier过滤富文本
+//该函数用于在编辑物品详情时过滤富文本，过滤后保存到数据库中。
+function htmlpurifier($html){
+    static $Purifier;
+    if(empty($Purifier)){
+        //载入第三方类库
+        if(!Vendor('htmlpurifier.HTMLPurifier','','.standalone.php')){
+            die('载入 HTMLPurifier 类库失败！');
+        }
+        $Purifier = new HTMLPurifier($html);
+    }
+    return $Purifier->purify($html);  
+}

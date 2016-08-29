@@ -35,7 +35,9 @@
 <div class="usercenter">
 <div class="menu">
 	<div class="menu-photo">
-		<img src="/Public/Home/img/avatar.png" alt="用户头像" />
+		<?php if(empty($user["avatar"])): ?><img src="/Public/Home/img/avatar.png" alt="用户头像">
+		<?php else: ?>
+			<img src="/Public/Uploads/headimg/<?php echo ($user["avatar"]); ?>"><?php endif; ?>
 	</div>
 	<dl><dt>物品管理</dt>
 		<dd><a href="<?php echo U('User/goods');?>">我的二手物品</a></dd>
@@ -52,9 +54,9 @@
 		<div class="showinfo">
 			<p>您好，欢迎来到会员中心！</p>
 			<p>请从左侧选择一个操作。</p>
-			<p>用户名：<?php echo ($data["username"]); ?></p>
-			<p>电话号码：<?php echo ($data["phone"]); ?></p>
-			<p>email：<?php echo ($data["email"]); ?></p>
+			<p>用户名：<?php echo ($user["username"]); ?></p>
+			<p>电话号码：<?php echo ($user["phone"]); ?></p>
+			<p>email：<?php echo ($user["email"]); ?></p>
 		</div>
 </div>
 </div>

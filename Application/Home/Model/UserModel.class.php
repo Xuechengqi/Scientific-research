@@ -3,7 +3,7 @@ namespace Home\Model;
 use Think\Model;
 class UserModel extends Model{
 	protected $insertFields = 'username,password';
-	protected $updateFields = 'phone,email';
+	protected $updateFields = 'phone,email,avatar';
 	protected $_validate = array(
 		//注册时验证(1表示self::MODEL_INSERT)
 		array('username','2,20','用户名位数不合法（2~20位）',1,'length',1),
@@ -36,6 +36,36 @@ class UserModel extends Model{
 	public function getInfo($where,$field){
 		$data = $this->field($field)->where($where)->find();
 		return $data;
+	}
+	//上传头像
+	public function uploadAvatar($save,$upfile){
+		//准备上传目录
+		$file['temp'] = './Public/Uploads/temp/';
+		file_exists($file['temp']) or mkdir($file['temp'],0777,true);
+		$Upload = new \Think\Upload(array(
+			'exts' =>array('jpg','jpeg','png'),
+			'rootPath' => $file['temp'],
+			'autoSub' => false,
+		));
+		if(false===($rst = $Upload->uploadOne($_FILES[$upfile]))){
+			return array('flag'=>false,'error'=>$Upload->getError());
+		}
+		$file['name'] = $rst['savename'];
+		$file['save'] = $save.'/';
+		$file['path'] = './Public/Uploads/headimg/'.$file['save'];
+		file_exists($file['path']) or mkdir($file['path'],0777,true);
+		$Image = new \Think\Image();
+		$Image->open($file['temp'].$file['name']);
+		$Image->thumb(100,100,2)->save($file['path'].$file['name']);
+		unlink($file['temp'].$file['name']);
+		return array('flag'=>true,'path'=>$file['save'].$file['name']);
+	}
+	//删除用户头像
+	public function delAvatarFile($where){
+		$thumb = $this->where($where)->getField('avatar');
+		if(!$thumb) return;
+		$path = './Public/Uploads/headimg/$thumb';
+		if(is_file($path)) unlink($path);
 	}
 }
 ?>

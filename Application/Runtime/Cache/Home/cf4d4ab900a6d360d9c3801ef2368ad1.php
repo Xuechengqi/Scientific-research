@@ -35,7 +35,9 @@
 <div class="usercenter">
 <div class="menu">
 	<div class="menu-photo">
-		<img src="/Public/Home/img/avatar.png" alt="用户头像" />
+		<?php if(empty($user["avatar"])): ?><img src="/Public/Home/img/avatar.png" alt="用户头像">
+		<?php else: ?>
+			<img src="/Public/Uploads/headimg/<?php echo ($user["avatar"]); ?>"><?php endif; ?>
 	</div>
 	<dl><dt>物品管理</dt>
 		<dd><a href="<?php echo U('User/goods');?>">我的二手物品</a></dd>
@@ -43,7 +45,7 @@
 		<dd>评价管理</dd>
 	</dl>
 	<dl><dt>我的账户</dt>
-		<dd><a href="<?php echo U('User/index');?>">个人信息</a></dd>
+		<dd><a href="<?php echo U('User/info');?>">个人信息修改</a></dd>
 		<dd>密码修改</dd>
 	</dl>
 </div>
