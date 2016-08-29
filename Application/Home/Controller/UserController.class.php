@@ -160,6 +160,11 @@ class UserController extends CommonController{
 		$cid = I('get.cid/d',0,'abs');
 		$Category = D('Category');
 		$Goods = D('Goods');
+		$User = D('User');
+		$userid = (int)SESSION()['userinfo']['id'];
+		$field = 'username,avatar';
+		$where = array('id'=>$userid);
+		$user = $User->getInfo($where,$field);
 		$where = array('id'=>$id,'recycle'=>'no');
 		if(IS_POST){
 			if(!$Goods->create(null,2)){
@@ -190,6 +195,7 @@ class UserController extends CommonController{
 		$data['cid'] = $cid;
 		$data['id'] = $id;
 		$data['p'] = $p;
+		$this->user = $user;
 		$this->assign($data);
 		$this->display();
 	}
@@ -200,6 +206,10 @@ class UserController extends CommonController{
 		if($cid < 0) $cid = 0;
 		$Category = D('Category');
 		$Goods = D('Goods');
+		$User = D('User');
+		$field = 'username,avatar';
+		$where = array('id'=>$userid);
+		$user = $User->getInfo($where,$field);
 		if(IS_POST){
 			if(!$Goods->create()){
 				$this->error('添加物品失败：'.$Goods->getError());
@@ -226,6 +236,7 @@ class UserController extends CommonController{
 		}
 		$data['category'] = $Category->getList();
 		$data['cid'] = $cid;
+		$this->user = $user;
 		$this->assign($data);
 		$this->display();
 	}
