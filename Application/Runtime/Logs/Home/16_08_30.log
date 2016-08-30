@@ -1,0 +1,11 @@
+[ 2016-08-30T09:52:09+08:00 ] 127.0.0.1 /index.php/Common/find?info=Mac&__hash__=dd364cd5cc7c0d91a0f4877b7d2acdca_b5d6aafd7a879907058d84d5b510a2b8
+ERR: Think\Model:findSomething方法不存在！
+
+[ 2016-08-30T10:05:32+08:00 ] 127.0.0.1 /index.php/Common/find?info=Mac&__hash__=dd364cd5cc7c0d91a0f4877b7d2acdca_b5d6aafd7a879907058d84d5b510a2b8
+ERR: 1054:Champ 'u.name' inconnu dans field list
+ [ SQL语句 ] : SELECT u.name as seller_name,g.id,g.category_id,g.name,g.publish_time,g.price,g.thumb,g.seller_id,g.desc FROM goods g LEFT JOIN user AS u ON u.id=g.seller_id  WHERE g.name LIKE '%Mac%' ORDER BY g.id desc LIMIT 0,12  
+
+[ 2016-08-30T10:07:04+08:00 ] 127.0.0.1 /index.php/Common/find?info=Mac&__hash__=dd364cd5cc7c0d91a0f4877b7d2acdca_b5d6aafd7a879907058d84d5b510a2b8
+ERR: 1054:Champ 'u.name' inconnu dans field list
+ [ SQL语句 ] : SELECT u.name as username,g.id,g.category_id,g.name,g.publish_time,g.price,g.thumb,g.seller_id,g.desc FROM goods g LEFT JOIN user AS u ON u.id=g.seller_id  WHERE g.name LIKE '%Mac%' ORDER BY g.id desc LIMIT 0,12  
+

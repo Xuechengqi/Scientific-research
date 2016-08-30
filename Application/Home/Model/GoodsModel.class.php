@@ -145,6 +145,26 @@ class GoodsModel extends Model{
 		//返回文件路径
 		return array('flag'=>true,'path'=>$file['save'].$file['name']);
 	}
+	//模糊查找物品
+	public function findSomething($char){
+		//传入的数据不能直接用在SQL语句中，其中可能存在导致SQL语句执行失败的关键字或特殊字符
+		$char = mysql_real_escape_string($char);
+		$where['g.name'] = array('like','%'.$char.'%');
+		$order = 'g.id desc';
+		$field = 'u.username as seller_name,g.id,g.category_id,g.name,g.publish_time,g.price,g.thumb,g.seller_id,g.desc';
+		//准备分页查询
+		$pagesize = C('USER_CONFIG.pagesize');
+		$count = $this->alias('g')->where($where)->count();
+		$Page = new \Think\Page($count,$pagesize);
+		$this->_customPage($Page);
+		//查询数据
+		$data = $this->alias('g')->join('__USER__ AS u ON u.id=g.seller_id','LEFT')->field($field)->where($where)->order($order)->page($p,$pagesize)->select();
+		//返回结果
+		return array(
+			'data'=>$data,
+			'pagelist'=>$Page->show(),
+		);
+	}
 	protected function _before_update(&$data,$option){
 		$data['price'] = (float)$data['price'];
 	}

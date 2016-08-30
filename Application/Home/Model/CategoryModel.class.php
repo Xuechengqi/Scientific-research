@@ -32,5 +32,12 @@ class CategoryModel extends Model{
 		$rst = category_parent($this->getData(),$id);
 		return array_reverse($rst['pcat']);
 	}
+	//根据分类名查找cid
+	public function getCid($char){
+		$char = mysql_real_escape_string($char);
+		$where['name'] = array('like','%'.$char.'%');
+		$cid = $this->where($where)->getField('id');
+		return $cid;
+	}
 }
 ?>

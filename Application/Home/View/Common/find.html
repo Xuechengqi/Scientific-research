@@ -1,0 +1,40 @@
+<div class="find">
+<div class="find-left left"><div class="title">相关物品推荐</div>
+	<foreach name="goods_2.recommend" item="v">
+		<ul class="item left">
+			<li><a href="{:U('Index/goods',array('id'=>$v['id']))}" target="_blank"><empty name="v.thumb"><img src="__PUBLIC__/Common/img/preview.jpg" alt=""><else /><img src="__PUBLIC__/Uploads/small/{$v.thumb}" alt=""></empty></a></li>
+			<li class="goods"><a href="{:U('Index/goods',array('id'=>$v['id']))}" target="_blank">{$v.name}</a></li>
+			<li class="price">￥{$v.price}</li>
+		</ul>
+	</foreach>
+</div>
+<div class="find-right left">
+	<div class="find-item">
+		<empty name="goods_1.data"><div class="empty-tip">没有更多您需要的商品。</div>
+		<else/>
+		<foreach name="goods_1.data" item="v">
+		<ul class="item left">
+			<li><a href="{:U('Index/goods',array('id'=>$v['id']))}" target="_blank"><empty name="v.thumb"><img src="__PUBLIC__/Common/img/preview.jpg"><else/><img src="__PUBLIC__/Uploads/small/{$v.thumb}"></empty></a></li>
+			<li class="goods"><a href="{:U('Index/goods',array('id'=>$v['id']))}" target="_blank">{$v.name}</a></li>
+			<li class="seller">{$v.seller_name}</li>
+			<li class="price">￥{$v.price}</li>
+		</ul>
+		</foreach>
+		<div class="clear"></div>
+		</empty>
+		<empty name="goods_2.data"><div class="empty-tip">没有找到您需要的相关商品。</div>
+		<else/>
+		<foreach name="goods_2.data" item="v">
+		<ul class="item left">
+			<li><a href="{:U('Index/goods',array('id'=>$v['id']))}" target="_blank"><empty name="v.thumb"><img src="__PUBLIC__/Common/img/preview.jpg"><else/><img src="__PUBLIC__/Uploads/small/{$v.thumb}"></empty></a></li>
+			<li class="goods"><a href="{:U('Index/goods',array('id'=>$v['id']))}" target="_blank">{$v.name}</a></li>
+			<li class="seller">{$v.user_name}</li>
+			<li class="price">￥{$v.price}</li>
+		</ul>
+		</foreach>
+		<div class="clear"></div>
+		<div class="pagelist">{$data.pagelist}</div>
+		</empty>
+	</div>
+</div>
+</div>
