@@ -20,10 +20,12 @@
 <div class="box">
 	<div class="header">
 		<a class="left" href="/index.php/"><div class="logo"></div></a>
-		<div class="search left">
-			<input type="text" class="left" />
-			<input class="search-btn" type="button" value="搜索" />
-		</div>
+		<form action="<?php echo U('Common/find');?>" method="GET" class="search left">
+			<div>
+				<input type="text" class="left" name="info" />
+				<input class="search-btn" type="submit" value="搜索" />
+			</div>
+		</form>
 		<div class="info left">
 			<input type="button" value="会员中心" onclick="location.href='<?php echo U('User/index');?>'" />
 		</div>
@@ -46,7 +48,7 @@
 	</dl>
 	<dl><dt>我的账户</dt>
 		<dd><a href="<?php echo U('User/info');?>">个人信息修改</a></dd>
-		<dd>密码修改</dd>
+		<dd><a href="<?php echo U('User/changePwd');?>">密码修改</a></dd>
 	</dl>
 </div>
 <div class="content">

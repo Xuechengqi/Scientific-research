@@ -20,7 +20,7 @@
 <div class="box">
 	<div class="header">
 		<a class="left" href="/index.php/"><div class="logo"></div></a>
-		<form action="Common/find" method="GET" class="search left">
+		<form action="<?php echo U('Common/find');?>" method="GET" class="search left">
 			<div>
 				<input type="text" class="left" name="info" />
 				<input class="search-btn" type="submit" value="搜索" />
@@ -48,7 +48,7 @@
 	</dl>
 	<dl><dt>我的账户</dt>
 		<dd><a href="<?php echo U('User/info');?>">个人信息修改</a></dd>
-		<dd>密码修改</dd>
+		<dd><a href="<?php echo U('User/changePwd');?>">密码修改</a></dd>
 	</dl>
 </div>
 <div class="content">

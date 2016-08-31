@@ -269,5 +269,28 @@ class UserController extends CommonController{
 		$this->assign('user',$data);
 		$this->display();
 	}
+	//修改密码
+	public function changePwd(){
+		if(IS_POST){
+			$User = D('User');
+			if(!$User->create(null,2)){
+				$this->error('修改密码失败：'.$User->getError());
+			}
+			$User->id = SESSION()['userinfo']['id'];
+			$User->username = SESSION()['userinfo']['name'];
+			$where = array('id'=>$User->id,'username'=>$User->username);
+			$oldPwd = $_POST['oldPwd'];
+			if(!$User->checkpwd($where,$oldPwd)){
+				$this->error('密码不正确，请确认您的旧密码。');
+			}
+			$User->password = $_POST['password'];
+			if(false === $User->where($where)->save()){
+				$this->error('修改密码失败！');
+			}
+			$this->assign('success',true);
+			session(null);
+		}
+		$this->display();
+	}
 }
 ?>

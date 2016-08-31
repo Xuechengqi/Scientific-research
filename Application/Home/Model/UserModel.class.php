@@ -3,13 +3,13 @@ namespace Home\Model;
 use Think\Model;
 class UserModel extends Model{
 	protected $insertFields = 'username,password';
-	protected $updateFields = 'phone,email,avatar';
+	protected $updateFields = 'phone,email,avatar,password';
 	protected $_validate = array(
-		//注册时验证(1表示self::MODEL_INSERT)
+		//注册时验证(1表示self::MODEL_INSERT,0表示存在字段就验证，2表示值不为空时验证，3全部情况下验证)
 		array('username','2,20','用户名位数不合法（2~20位）',1,'length',1),
 		array('username','/^[\w\x{4e00}-\x{9fa5}]+$/u','用户名只能是汉字、字母、数字、下划线。',1,'regex',1),
-		array('password','6,20','密码位数不合法（6~20位）',1,'length',1),
-		array('password','/^\w+$/','密码只能是字母、数字、下划线。',1,'regex',1),
+		array('password','6,20','密码位数不合法（6~20位）',0,'length',0),
+		array('password','/^\w+$/','密码只能是字母、数字、下划线。',0,'regex',0),
 	);
 	//密码加密函数
 	private function password($pwd,$salt){
@@ -66,6 +66,19 @@ class UserModel extends Model{
 		if(!$thumb) return;
 		$path = './Public/Uploads/headimg/$thumb';
 		if(is_file($path)) unlink($path);
+	}
+	//判断用户密码
+	public function checkpwd($where,$oldPwd){
+		$data = $this->field('id,password,salt')->where($where)->find();
+		if($data && $data['password'] == $this->password($oldPwd,$data['salt'])){
+			return array('id'=>$data['id']);
+		}
+		return false;
+	}
+	//
+	protected function _before_update(&$data,$option){
+		$data['salt'] = substr(uniqid(),-6);
+		$data['password'] = $this->password($data['password'],$data['salt']);
 	}
 }
 ?>

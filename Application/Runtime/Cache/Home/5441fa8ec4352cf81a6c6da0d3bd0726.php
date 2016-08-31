@@ -52,50 +52,36 @@
 	</dl>
 </div>
 <div class="content">
-		<div class="title">我的二手物品</div>
-		<a href="<?php echo U('User/add');?>" class="light"><input type="button" value="添加商品" /></a>
-		<div class="list full">
-			<table>
-				<tr><th class="t1" width="120">商品分类</th><th width="120">商品名称</th><th width="120">发布时间</th><th width="120">价格</th><th width="120">是否出售</th><th width="120">操作</th></tr>
-				<?php if(is_array($goods["data"])): foreach($goods["data"] as $key=>$v): ?><tr><td class="t1">
-						<?php if(empty($v["category_id"])): ?>未分类
-						<?php else: ?>
-							<?php echo ($v["category_name"]); endif; ?>
-					</td>
-					<td><?php echo ($v["name"]); ?></td>
-					<td><?php echo ($v["publish_time"]); ?></td>
-					<td><?php echo ($v["price"]); ?></td>
-					<td><a href="#" class="act-onsale" data-id="<?php echo ($v["id"]); ?>" data-status="<?php echo ($v["on_sale"]); ?>"><?php if(($v["on_sale"]) == "yes"): ?>是<?php else: ?>否<?php endif; ?></a></td><td>
-					<a href="<?php echo U('User/editGoods',array('id'=>$v['id'],'cid'=>$v['category_id'],'p'=>$p));?>">修改</a>　<a href="#" class="act-del" data-id="<?php echo ($v["id"]); ?>">删除</a></td></tr><?php endforeach; endif; ?>
-			</table>
+	<div class="title">我的账户——<span>修改密码</span></div>
+	<?php if(isset($success)): ?><div class="mssage">修改成功。重新<a href="<?php echo U('User/login');?>">登录</a></div><?php endif; ?>
+	<div class="list auto">
+		<form method="post">
+		<p>旧密码：<input name="oldPwd" type="password" required /></p>
+		<p>新密码：<input id="newPwd_1" name="password" type="password" required /></p>
+		<p>再次输入新密码：<input id="newPwd_2" type="password" required /></p>
+		<div class="btn">
+			<input type="submit" value="保存修改">
 		</div>
-		<div class="pagelist"><?php echo ($goods["pagelist"]); ?></div>
-		<form method="post" id="form">
-			<input type="hidden" name="id" id="target_id">
-			<input type="hidden" name="field" id="target_field">
-			<input type="hidden" name="status" id="target_status">
 		</form>
-		</div>
+	</div>
+</div>
 </div>
 <script>
-	//快捷操作
-	function change_status(obj,field){
-		$("#target_id").val(obj.attr("data-id"));
-		$("#target_field").attr("value",field)
-		$("#target_status").attr("value",(obj.attr("data-status")=="yes") ? "no" : "yes");
-		$("#form").attr("action","<?php echo U('User/change',array('p'=>$p,'cid'=>$cid));?>").submit();
+//失去焦点时验证表单
+$("#newPwd_2").blur(function(){
+	if($(this).val() !== $("#newPwd_1").val()){
+		$(this).addClass('pwderror');
+	}else{
+		$(this).removeClass('pwderror');
 	}
-	//快捷操作-上架
-	$(".act-onsale").click(function(){
-		change_status($(this),'on_sale');
-	});
-	//快捷操作-删除
-	$(".act-del").click(function(){
-		if(confirm('确定要删除吗？')){
-			$("#target_id").val($(this).attr("data-id"));
-			$("#form").attr("action","<?php echo U('User/del',array('p'=>$p,'cid'=>$cid));?>").submit();
-		}
-	});
+});
+//表单提交时验证表单
+$("form").submit(function(){
+	if($("#newPwd_2").val() !== $("#newPwd_1").val()){
+		alert('两次输入密码不一致！');
+		return false;
+	}
+});
 </script>
 </div>
 </body>

@@ -179,4 +179,7 @@ table td{vertical-align: middle;text-align: center;}
 /*修改页面*/
 .usercenter .content .top-button{height:20px;font-family: Verdana,"Microsoft YaHei";font-size:14px;font-weight: bold;color:#333;margin-top: 8px;margin-bottom: 8px;}
 .usercenter .content .top-button a{color:#666;border:1px solid #E3E3E3;margin-left: 126px;}
-
+/*修改密码页面*/
+.usercenter .content .list .pwderror{border:1px solid #E37A7D;}
+.usercenter .content form{width:500px;text-align: center;font-size: 16px;}
+.usercenter .content p{margin:4px;display:block;width:400px;}

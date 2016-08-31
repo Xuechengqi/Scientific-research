@@ -44,7 +44,7 @@
 </div>
 <div class="find-right left">
 	<div class="find-item">
-		<?php if(empty($goods_1["data"])): ?><div class="empty-tip">没有找到您需要的商品。</div>
+		<?php if(empty($goods_1["data"])): ?><div class="empty-tip">没有更多您需要的商品。</div>
 		<?php else: ?>
 		<?php if(is_array($goods_1["data"])): foreach($goods_1["data"] as $key=>$v): ?><ul class="item left">
 			<li><a href="<?php echo U('Index/goods',array('id'=>$v['id']));?>" target="_blank"><?php if(empty($v["thumb"])): ?><img src="/Public/Common/img/preview.jpg"><?php else: ?><img src="/Public/Uploads/small/<?php echo ($v["thumb"]); ?>"><?php endif; ?></a></li>
